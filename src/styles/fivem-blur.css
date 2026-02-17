@@ -4,6 +4,14 @@
  * Using solid backgrounds for maximum compatibility
  */
 
+/* CRITICAL: Make body and root transparent for FiveM */
+body,
+html,
+#root {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
 /* Placeholder classes - backgrounds are set directly on components */
 .bank-glass-blur {
   position: relative;
