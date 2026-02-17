@@ -45,12 +45,18 @@ html,
 
 /* CRITICAL: Force all SVG icons to inherit colors properly */
 svg {
-  fill: currentColor !important;
+  color: currentColor !important;
 }
 
-svg * {
+svg path,
+svg line,
+svg polyline,
+svg rect,
+svg circle,
+svg polygon {
   stroke: currentColor !important;
   fill: none !important;
+  vector-effect: non-scaling-stroke !important;
 }
 
 /* Lucide icons specific fixes - CRITICAL FOR FIVEM */

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Wallet, CreditCard, Copy, Check, X } from "lucide-react";
+import { Wallet, CreditCard, X } from "lucide-react";
 import { useState, ReactNode } from "react";
 import { toast } from "sonner";
 
@@ -54,13 +54,8 @@ export function BankHeader({
               whileHover={{ scale: 1.02 }}
             >
               <Wallet 
-                className="w-4 h-4" 
-                style={{ 
-                  stroke: '#c084fc',
-                  fill: 'none',
-                  strokeWidth: 2,
-                  color: '#c084fc'
-                }} 
+                color="#c084fc"
+                size={16}
               />
               <div>
                 <p className="text-xs text-gray-400" style={{ color: '#9ca3af' }}>Bank Balance</p>
@@ -75,13 +70,8 @@ export function BankHeader({
               whileHover={{ scale: 1.02 }}
             >
               <CreditCard 
-                className="w-4 h-4" 
-                style={{ 
-                  stroke: '#4ade80',
-                  fill: 'none',
-                  strokeWidth: 2,
-                  color: '#4ade80'
-                }} 
+                color="#4ade80"
+                size={16}
               />
               <div>
                 <p className="text-xs text-gray-400" style={{ color: '#9ca3af' }}>Cash</p>
@@ -104,13 +94,8 @@ export function BankHeader({
               title="Close (ESC)"
             >
               <X 
-                className="w-5 h-5" 
-                style={{ 
-                  stroke: '#9ca3af',
-                  fill: 'none',
-                  strokeWidth: 2,
-                  color: '#9ca3af'
-                }} 
+                color="#9ca3af"
+                size={20}
               />
             </button>
           )}

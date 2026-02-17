@@ -94,13 +94,8 @@ export function BankSidebar({
         >
           <div className="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center shadow-lg">
             <Building2 
-              className="w-5 h-5" 
-              style={{ 
-                stroke: '#ffffff',
-                fill: 'none',
-                strokeWidth: 2,
-                color: '#ffffff'
-              }} 
+              color="#ffffff"
+              size={20}
             />
           </div>
           <div>
@@ -152,13 +147,8 @@ export function BankSidebar({
                     </>
                   )}
                   <Icon
-                    className="w-5 h-5 relative z-10"
-                    style={{
-                      stroke: isActive ? '#ffffff' : '#9ca3af',
-                      fill: 'none',
-                      strokeWidth: 2,
-                      color: isActive ? '#ffffff' : '#9ca3af'
-                    }}
+                    color={isActive ? '#ffffff' : '#9ca3af'}
+                    size={20}
                   />
                   <span className="font-medium relative z-10">{item.label}</span>
                   {showBadge && (
@@ -185,13 +175,8 @@ export function BankSidebar({
           whileTap={{ scale: 0.98 }}
         >
           <LogOut
-            className="w-5 h-5"
-            style={{
-              stroke: '#9ca3af',
-              fill: 'none',
-              strokeWidth: 2,
-              color: '#9ca3af'
-            }}
+            color="#9ca3af"
+            size={20}
           />
           <span className="font-medium">Logout</span>
         </motion.button>
