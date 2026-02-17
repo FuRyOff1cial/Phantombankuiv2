@@ -63,11 +63,11 @@ export function Transfer({
         <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/30 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-12 h-12 rounded-lg bg-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/30">
-              <ArrowRightLeft className="w-6 h-6 text-white" />
+              <ArrowRightLeft className="w-6 h-6 text-white" style={{ color: '#ffffff', stroke: '#ffffff' }} />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-white">Send Money</h3>
-              <p className="text-sm text-gray-400">
+              <h3 className="text-lg font-semibold text-white" style={{ color: '#ffffff' }}>Send Money</h3>
+              <p className="text-sm text-gray-400" style={{ color: '#9ca3af' }}>
                 Transfer funds to another player
               </p>
             </div>
