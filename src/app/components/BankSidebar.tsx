@@ -85,7 +85,7 @@ export function BankSidebar({
   ];
 
   return (
-    <div className="w-64 h-full bg-gradient-to-b from-[#0f0f1e]/90 to-[#1a1a2e]/90 backdrop-blur-xl border-r border-purple-500/20 flex flex-col">
+    <div className="w-64 h-full bg-gradient-to-b from-[#0f0f1e]/90 to-[#1a1a2e]/90 bank-sidebar-glass border-r border-purple-500/20 flex flex-col">
       <div className="p-6 flex-1">
         <div className="flex items-center gap-3 mb-8">
           <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">

@@ -149,7 +149,7 @@ export function SharedAccounts({
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <h3 className="text-lg font-semibold text-white mb-4">Create Shared Account</h3>
             <div className="space-y-4">
               <div>
@@ -192,7 +192,7 @@ export function SharedAccounts({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
           onClick={() => setManagingAccount(null)}
         >
           <motion.div
@@ -201,7 +201,7 @@ export function SharedAccounts({
             onClick={(e) => e.stopPropagation()}
             className="w-full max-w-lg"
           >
-            <Card className="p-6 bg-[#1a1a2e] border-purple-500/30 backdrop-blur-xl">
+            <Card className="p-6 bg-[#1a1a2e] border-purple-500/30 bank-glass-blur">
               <h3 className="text-xl font-bold text-white mb-4">Manage Members</h3>
               
               <div className="space-y-4 mb-6">
@@ -273,7 +273,7 @@ export function SharedAccounts({
 
       <div className="space-y-4">
         {sharedAccounts.length === 0 ? (
-          <Card className="p-12 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-12 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <div className="text-center">
               <Users className="w-12 h-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-400">No shared accounts yet</p>
@@ -286,7 +286,7 @@ export function SharedAccounts({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+              <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">

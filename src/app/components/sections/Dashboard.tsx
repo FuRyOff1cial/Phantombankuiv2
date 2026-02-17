@@ -80,7 +80,7 @@ export function Dashboard({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="p-6 bg-gradient-to-br from-purple-500/10 to-blue-500/10 border-purple-500/30 backdrop-blur-xl">
+          <Card className="p-6 bg-gradient-to-br from-purple-500/10 to-blue-500/10 border-purple-500/30 bank-glass-blur">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Credit Score</h3>
               <TrendingUp className="w-5 h-5 text-purple-400" />
@@ -95,7 +95,7 @@ export function Dashboard({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/30 backdrop-blur-xl">
+          <Card className="p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/30 bank-glass-blur">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Total Assets</h3>
               <DollarSign className="w-5 h-5 text-green-400" />
@@ -112,7 +112,7 @@ export function Dashboard({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="p-6 bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/30 backdrop-blur-xl">
+          <Card className="p-6 bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/30 bank-glass-blur">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Transactions</h3>
               <TrendingDown className="w-5 h-5 text-orange-400" />
@@ -130,7 +130,7 @@ export function Dashboard({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
                 <ArrowDownLeft className="w-5 h-5 text-green-400" />
@@ -165,7 +165,7 @@ export function Dashboard({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
                 <ArrowUpRight className="w-5 h-5 text-red-400" />
@@ -202,7 +202,7 @@ export function Dashboard({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
-        <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+        <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
           <h3 className="text-lg font-semibold text-white mb-4">Recent Transactions</h3>
           <div className="space-y-3">
             {recentTransactions.length === 0 ? (

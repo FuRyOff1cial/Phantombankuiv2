@@ -106,7 +106,7 @@ export function Society({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <Card className="p-8 bg-gradient-to-br from-purple-500/20 to-blue-500/20 border-purple-500/30 backdrop-blur-xl">
+        <Card className="p-8 bg-gradient-to-br from-purple-500/20 to-blue-500/20 border-purple-500/30 bank-glass-blur">
           <div className="flex items-center gap-4 mb-6">
             <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
               <Building2 className="w-8 h-8 text-white" />
@@ -133,7 +133,7 @@ export function Society({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
                 <ArrowDownLeft className="w-5 h-5 text-green-400" />
@@ -169,7 +169,7 @@ export function Society({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
                 <ArrowUpRight className="w-5 h-5 text-red-400" />
@@ -205,7 +205,7 @@ export function Society({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
                 <ArrowRightLeft className="w-5 h-5 text-blue-400" />
@@ -241,7 +241,7 @@ export function Society({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center">
                 <ArrowRightLeft className="w-5 h-5 text-orange-400" />

@@ -78,7 +78,7 @@ export function Loans({
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <h3 className="text-lg font-semibold text-white mb-4">Request New Loan</h3>
             <div className="space-y-4">
               <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/30">
@@ -125,7 +125,7 @@ export function Loans({
 
       <div className="space-y-4">
         {loans.length === 0 ? (
-          <Card className="p-12 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-12 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <div className="text-center">
               <Landmark className="w-12 h-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-400">No active loans</p>
@@ -138,7 +138,7 @@ export function Loans({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+              <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">

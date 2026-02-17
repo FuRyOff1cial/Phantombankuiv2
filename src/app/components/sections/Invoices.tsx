@@ -76,7 +76,7 @@ export function Invoices({
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <h3 className="text-lg font-semibold text-white mb-4">Send New Invoice</h3>
             <div className="space-y-4">
               <div>
@@ -148,7 +148,7 @@ export function Invoices({
         <h3 className="text-lg font-semibold text-white mb-4">Received Invoices</h3>
         <div className="space-y-3">
           {receivedInvoices.length === 0 ? (
-            <Card className="p-8 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+            <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
               <p className="text-center text-gray-400">No received invoices</p>
             </Card>
           ) : (
@@ -158,7 +158,7 @@ export function Invoices({
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
               >
-                <Card className="p-4 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+                <Card className="p-4 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
@@ -212,7 +212,7 @@ export function Invoices({
         <h3 className="text-lg font-semibold text-white mb-4">Sent Invoices</h3>
         <div className="space-y-3">
           {sentInvoices.length === 0 ? (
-            <Card className="p-8 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+            <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
               <p className="text-center text-gray-400">No sent invoices</p>
             </Card>
           ) : (
@@ -222,7 +222,7 @@ export function Invoices({
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
               >
-                <Card className="p-4 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+                <Card className="p-4 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">

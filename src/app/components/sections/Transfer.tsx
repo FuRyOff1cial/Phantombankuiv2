@@ -60,7 +60,7 @@ export function Transfer({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <Card className="p-8 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+        <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
           <div className="flex items-center gap-3 mb-6">
             <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
               <ArrowRightLeft className="w-6 h-6 text-white" />

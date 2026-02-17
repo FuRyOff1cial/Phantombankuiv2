@@ -82,7 +82,7 @@ export function Cards({
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
         >
-          <UICard className="p-6 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <UICard className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <h3 className="text-lg font-semibold text-white mb-4">Create New Card</h3>
             <div className="space-y-4">
               <div>
@@ -138,7 +138,7 @@ export function Cards({
 
       <div className="grid grid-cols-2 gap-6">
         {cards.length === 0 ? (
-          <UICard className="col-span-2 p-12 bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+          <UICard className="col-span-2 p-12 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <div className="text-center">
               <CreditCard className="w-12 h-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-400">No cards yet</p>
@@ -151,7 +151,7 @@ export function Cards({
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
             >
-              <UICard className="overflow-hidden bg-[#1a1a2e]/60 border-purple-500/20 backdrop-blur-xl">
+              <UICard className="overflow-hidden bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
                 {/* Card Visual */}
                 <div
                   className={`p-6 bg-gradient-to-br ${

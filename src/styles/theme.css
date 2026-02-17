@@ -39,6 +39,13 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  
+  /* FiveM-compatible blur variables (fake blur using ::before) */
+  --bank-bg-rgb: 15, 15, 30;
+  --bank-card-rgb: 26, 26, 46;
+  --bank-blur-opacity: 0.5;
+  --bank-bg: #0f0f1e;
+  --bank-card: #1a1a2e;
 }
 
 .dark {

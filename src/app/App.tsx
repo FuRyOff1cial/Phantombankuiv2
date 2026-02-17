@@ -711,7 +711,7 @@ export default function App() {
         >
           {!bankData ? (
             // Loading State
-            <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-[#0f0f1e]/95 to-[#1a1a2e]/95 backdrop-blur-xl">
+            <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-[#0f0f1e]/95 to-[#1a1a2e]/95">
               <div className="text-center">
                 <Loader2 className="w-12 h-12 text-purple-500 animate-spin mx-auto mb-4" />
                 <p className="text-white text-lg">Loading bank data...</p>
@@ -732,7 +732,7 @@ export default function App() {
               />
 
               {/* Main Content */}
-              <div className="flex-1 flex flex-col bg-gradient-to-br from-[#0f0f1e]/95 to-[#1a1a2e]/95 backdrop-blur-xl">
+              <div className="flex-1 flex flex-col bg-gradient-to-br from-[#0f0f1e]/95 to-[#1a1a2e]/95">
                 <BankHeader
                   playerName={bankData.playerName}
                   iban={bankData.iban}
