@@ -120,6 +120,42 @@ button {
   color: #ffffff !important;
 }
 
+/* Force button background colors for specific variants */
+button.bg-green-600,
+button[class*="bg-green"] {
+  background-color: #16a34a !important;
+}
+
+button.bg-red-600,
+button[class*="bg-red"] {
+  background-color: #dc2626 !important;
+}
+
+button.bg-purple-600,
+button[class*="bg-purple"] {
+  background-color: #9333ea !important;
+}
+
+button.bg-blue-600,
+button[class*="bg-blue"] {
+  background-color: #2563eb !important;
+}
+
+button.bg-gray-600,
+button[class*="bg-gray"] {
+  background-color: #4b5563 !important;
+}
+
+button.bg-orange-600,
+button[class*="bg-orange"] {
+  background-color: #ea580c !important;
+}
+
+button.bg-yellow-600,
+button[class*="bg-yellow"] {
+  background-color: #ca8a04 !important;
+}
+
 /* Specific component text overrides for CEF */
 p, span, div {
   color: inherit;

@@ -239,6 +239,7 @@ export function Dashboard({
                 onClick={handleDeposit}
                 disabled={isLoading}
                 className="w-full bg-green-600 hover:bg-green-700 hover:scale-[1.02] transition-all duration-200"
+                style={{ backgroundColor: '#16a34a', color: '#ffffff' }}
               >
                 Deposit
               </Button>
@@ -274,6 +275,7 @@ export function Dashboard({
                 onClick={handleWithdraw}
                 disabled={isLoading}
                 className="w-full bg-red-600 hover:bg-red-700 hover:scale-[1.02] transition-all duration-200"
+                style={{ backgroundColor: '#dc2626', color: '#ffffff' }}
               >
                 Withdraw
               </Button>

@@ -1,64 +1,35 @@
-@import './fonts.css';
-@import './theme.css';
-@import './tailwind.css';
-@import './fivem-blur.css';
+@import "@/styles/tailwind.css";
+@import "@/styles/theme.css";
+@import "@/styles/fonts.css";
+@import "@/styles/fivem-blur.css";
 
-/* Custom Bank UI Styles */
-body {
-  background: #0a0a14;
-  font-family: system-ui, -apple-system, sans-serif;
+/* Global FiveM/CEF button fixes */
+button[class*="bg-green"] {
+  background-color: #16a34a !important;
+  color: #ffffff !important;
 }
 
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+button[class*="bg-red"] {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
+button[class*="bg-purple"] {
+  background-color: #9333ea !important;
+  color: #ffffff !important;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.3);
-  border-radius: 4px;
+button[class*="bg-blue"] {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(139, 92, 246, 0.5);
+button[class*="bg-gray"] {
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
 }
 
-/* Glassmorphism Effects - FiveM Compatible (no backdrop-filter) */
-.glass-effect {
-  background: rgba(26, 26, 46, 0.88);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-}
-
-/* Glow Effects */
-.glow-purple {
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-}
-
-.glow-blue {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-}
-
-/* Custom Animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Toast Styling */
-.bank-toast {
-  border-radius: 8px;
-  font-family: system-ui, -apple-system, sans-serif;
+button[class*="bg-orange"] {
+  background-color: #ea580c !important;
+  color: #ffffff !important;
 }
