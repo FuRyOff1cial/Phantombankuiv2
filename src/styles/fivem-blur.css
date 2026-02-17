@@ -120,44 +120,6 @@ button {
   color: #ffffff !important;
 }
 
-/* Force icon colors inside buttons and divs */
-button svg,
-div svg {
-  fill: currentColor !important;
-  stroke: currentColor !important;
-}
-
-/* Specific icon color overrides */
-.text-purple-400 svg,
-[class*="text-purple-400"] svg {
-  color: #c084fc !important;
-  stroke: #c084fc !important;
-}
-
-.text-green-400 svg,
-[class*="text-green-400"] svg {
-  color: #4ade80 !important;
-  stroke: #4ade80 !important;
-}
-
-.text-red-400 svg,
-[class*="text-red-400"] svg {
-  color: #f87171 !important;
-  stroke: #f87171 !important;
-}
-
-.text-blue-400 svg,
-[class*="text-blue-400"] svg {
-  color: #60a5fa !important;
-  stroke: #60a5fa !important;
-}
-
-.text-white svg,
-[class*="text-white"] svg {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
-}
-
 /* Force button background colors for specific variants */
 button.bg-green-600,
 button[class*="bg-green"] {
