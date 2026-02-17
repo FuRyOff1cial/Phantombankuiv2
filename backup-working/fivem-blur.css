@@ -43,26 +43,6 @@ html,
   scrollbar-color: #9333ea rgba(15, 15, 30, 0.5);
 }
 
-/* CRITICAL: Force all SVG icons to inherit colors properly */
-svg {
-  fill: currentColor !important;
-}
-
-svg * {
-  stroke: currentColor !important;
-  fill: none !important;
-}
-
-/* Lucide icons specific fixes */
-.lucide,
-[class*="lucide"] {
-  stroke: currentColor !important;
-  fill: none !important;
-  stroke-width: 2 !important;
-  stroke-linecap: round !important;
-  stroke-linejoin: round !important;
-}
-
 /* Placeholder classes - backgrounds are set directly on components */
 .bank-glass-blur {
   position: relative;
