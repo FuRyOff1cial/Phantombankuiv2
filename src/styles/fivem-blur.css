@@ -21,3 +21,119 @@
 .perspective-1000 {
   perspective: 1000px;
 }
+
+/* Force text colors for FiveM/CEF compatibility */
+.text-white,
+h1, h2, h3, h4, h5, h6,
+[class*="text-white"] {
+  color: #ffffff !important;
+}
+
+.text-gray-300,
+[class*="text-gray-300"] {
+  color: #d1d5db !important;
+}
+
+.text-gray-400,
+[class*="text-gray-400"] {
+  color: #9ca3af !important;
+}
+
+.text-gray-500,
+[class*="text-gray-500"] {
+  color: #6b7280 !important;
+}
+
+.text-gray-600,
+[class*="text-gray-600"] {
+  color: #4b5563 !important;
+}
+
+.text-purple-300,
+[class*="text-purple-300"] {
+  color: #d8b4fe !important;
+}
+
+.text-purple-400,
+[class*="text-purple-400"] {
+  color: #c084fc !important;
+}
+
+.text-green-300,
+[class*="text-green-300"] {
+  color: #86efac !important;
+}
+
+.text-green-400,
+[class*="text-green-400"] {
+  color: #4ade80 !important;
+}
+
+.text-red-400,
+[class*="text-red-400"] {
+  color: #f87171 !important;
+}
+
+.text-blue-400,
+[class*="text-blue-400"] {
+  color: #60a5fa !important;
+}
+
+.text-orange-300,
+[class*="text-orange-300"] {
+  color: #fdba74 !important;
+}
+
+.text-orange-400,
+[class*="text-orange-400"] {
+  color: #fb923c !important;
+}
+
+.text-yellow-400,
+[class*="text-yellow-400"] {
+  color: #facc15 !important;
+}
+
+/* Force label colors */
+label,
+[class*="Label"] {
+  color: #d1d5db !important;
+}
+
+/* Force input and select text colors */
+input,
+textarea,
+select,
+[class*="Input"],
+[class*="Select"] {
+  color: #ffffff !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280 !important;
+  opacity: 0.7;
+}
+
+/* Force button text colors */
+button {
+  color: #ffffff !important;
+}
+
+/* Specific component text overrides for CEF */
+p, span, div {
+  color: inherit;
+}
+
+/* Table text colors */
+table,
+td,
+th {
+  color: #ffffff !important;
+}
+
+/* Select dropdown colors */
+[role="option"],
+[data-radix-select-viewport] {
+  color: #ffffff !important;
+}

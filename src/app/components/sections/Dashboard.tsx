@@ -167,11 +167,11 @@ export function Dashboard({
         >
           <Card className="p-6 bg-purple-900/60 border-2 border-purple-500/60 bank-glass-blur shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm text-gray-400">Credit Score</h3>
+              <h3 className="text-sm text-gray-400" style={{ color: '#9ca3af' }}>Credit Score</h3>
               <TrendingUp className="w-5 h-5 text-purple-400" />
             </div>
-            <p className="text-3xl font-bold text-white mb-1">{creditScore}</p>
-            <p className="text-sm text-purple-300">{creditScoreLabel || "N/A"}</p>
+            <p className="text-3xl font-bold text-white mb-1" style={{ color: '#ffffff' }}>{creditScore}</p>
+            <p className="text-sm text-purple-300" style={{ color: '#d8b4fe' }}>{creditScoreLabel || "N/A"}</p>
           </Card>
         </motion.div>
 
@@ -183,13 +183,13 @@ export function Dashboard({
         >
           <Card className="p-6 bg-green-900/60 border-2 border-green-500/60 bank-glass-blur shadow-lg shadow-green-500/20 hover:shadow-xl hover:shadow-green-500/30 transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm text-gray-400">Total Assets</h3>
+              <h3 className="text-sm text-gray-400" style={{ color: '#9ca3af' }}>Total Assets</h3>
               <DollarSign className="w-5 h-5 text-green-400" />
             </div>
-            <p className="text-3xl font-bold text-white mb-1">
+            <p className="text-3xl font-bold text-white mb-1" style={{ color: '#ffffff' }}>
               {formatCurrency(balance + cash, currency)}
             </p>
-            <p className="text-sm text-green-300">Bank + Cash</p>
+            <p className="text-sm text-green-300" style={{ color: '#86efac' }}>Bank + Cash</p>
           </Card>
         </motion.div>
 
@@ -200,11 +200,11 @@ export function Dashboard({
         >
           <Card className="p-6 bg-orange-900/60 border-2 border-orange-500/60 bank-glass-blur shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm text-gray-400">Transactions</h3>
+              <h3 className="text-sm text-gray-400" style={{ color: '#9ca3af' }}>Transactions</h3>
               <TrendingDown className="w-5 h-5 text-orange-400" />
             </div>
-            <p className="text-3xl font-bold text-white mb-1">{transactions.length}</p>
-            <p className="text-sm text-orange-300">This period</p>
+            <p className="text-3xl font-bold text-white mb-1" style={{ color: '#ffffff' }}>{transactions.length}</p>
+            <p className="text-sm text-orange-300" style={{ color: '#fdba74' }}>This period</p>
           </Card>
         </motion.div>
       </div>
@@ -221,11 +221,11 @@ export function Dashboard({
               <div className="icon-deposit w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center transition-all duration-300">
                 <ArrowDownLeft className="w-5 h-5 text-green-400" />
               </div>
-              <h3 className="text-lg font-semibold text-white">Deposit Cash</h3>
+              <h3 className="text-lg font-semibold text-white" style={{ color: '#ffffff' }}>Deposit Cash</h3>
             </div>
             <div className="space-y-4">
               <div>
-                <Label className="text-gray-300">Amount</Label>
+                <Label className="text-gray-300" style={{ color: '#d1d5db' }}>Amount</Label>
                 <Input
                   type="number"
                   placeholder="0.00"
@@ -256,11 +256,11 @@ export function Dashboard({
               <div className="icon-withdraw w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center transition-all duration-300">
                 <ArrowUpRight className="w-5 h-5 text-red-400" />
               </div>
-              <h3 className="text-lg font-semibold text-white">Withdraw Cash</h3>
+              <h3 className="text-lg font-semibold text-white" style={{ color: '#ffffff' }}>Withdraw Cash</h3>
             </div>
             <div className="space-y-4">
               <div>
-                <Label className="text-gray-300">Amount</Label>
+                <Label className="text-gray-300" style={{ color: '#d1d5db' }}>Amount</Label>
                 <Input
                   type="number"
                   placeholder="0.00"

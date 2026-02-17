@@ -96,8 +96,8 @@ export function BankSidebar({
             <Building2 className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-white">Phantom Bank</h1>
-            {isAtm && <p className="text-xs text-purple-300">ATM Mode</p>}
+            <h1 className="text-xl font-bold text-white" style={{ color: '#ffffff' }}>Phantom Bank</h1>
+            {isAtm && <p className="text-xs text-purple-300" style={{ color: '#d8b4fe' }}>ATM Mode</p>}
           </div>
         </motion.div>
 

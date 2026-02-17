@@ -685,8 +685,8 @@ export default function App() {
             <div className="flex-1 flex items-center justify-center bg-gradient-to-br from-[#0f0f1e]/95 to-[#1a1a2e]/95">
               <div className="text-center">
                 <Loader2 className="w-12 h-12 text-purple-500 animate-spin mx-auto mb-4" />
-                <p className="text-white text-lg">Loading bank data...</p>
-                <p className="text-gray-400 text-sm mt-2">Waiting for server response</p>
+                <p className="text-white text-lg" style={{ color: '#ffffff' }}>Loading bank data...</p>
+                <p className="text-gray-400 text-sm mt-2" style={{ color: '#9ca3af' }}>Waiting for server response</p>
               </div>
             </div>
           ) : (

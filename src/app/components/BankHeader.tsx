@@ -40,22 +40,12 @@ export function BankHeader({
       <div className="h-full px-8 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <div>
-            <h2 className="text-lg font-semibold text-white">
+            <h2 className="text-lg font-semibold text-white" style={{ color: '#ffffff' }}>
               {playerName || "Welcome"}
             </h2>
-            <motion.button
-              onClick={handleCopyIban}
-              className="flex items-center gap-2 text-sm text-purple-300 font-mono hover:text-purple-200 transition-colors group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span>{iban}</span>
-              {copied ? (
-                <Check className="w-3.5 h-3.5 text-green-400" />
-              ) : (
-                <Copy className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              )}
-            </motion.button>
+            <p className="text-sm text-gray-400" style={{ color: '#9ca3af' }}>
+              IBAN: {iban}
+            </p>
           </div>
 
           <div className="flex items-center gap-6">
@@ -65,8 +55,8 @@ export function BankHeader({
             >
               <Wallet className="w-4 h-4 text-purple-400" />
               <div>
-                <p className="text-xs text-gray-400">Bank Balance</p>
-                <p className="text-sm font-bold text-white">
+                <p className="text-xs text-gray-400" style={{ color: '#9ca3af' }}>Bank Balance</p>
+                <p className="text-sm font-bold text-white" style={{ color: '#ffffff' }}>
                   {currency}{balance.toLocaleString()}
                 </p>
               </div>
@@ -78,8 +68,8 @@ export function BankHeader({
             >
               <CreditCard className="w-4 h-4 text-green-400" />
               <div>
-                <p className="text-xs text-gray-400">Cash</p>
-                <p className="text-sm font-bold text-white">
+                <p className="text-xs text-gray-400" style={{ color: '#9ca3af' }}>Cash</p>
+                <p className="text-sm font-bold text-white" style={{ color: '#ffffff' }}>
                   {currency}{cash.toLocaleString()}
                 </p>
               </div>

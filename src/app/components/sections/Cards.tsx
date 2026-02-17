@@ -50,8 +50,8 @@ export function Cards({
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-white">Cards</h2>
-          <p className="text-sm text-gray-400">Manage your bank cards</p>
+          <h2 className="text-2xl font-bold text-white" style={{ color: '#ffffff' }}>Cards</h2>
+          <p className="text-sm text-gray-400" style={{ color: '#9ca3af' }}>Manage your bank cards</p>
         </div>
         <Button
           onClick={() => setShowCreateForm(!showCreateForm)}
@@ -69,10 +69,10 @@ export function Cards({
           exit={{ opacity: 0, height: 0 }}
         >
           <UICard className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
-            <h3 className="text-lg font-semibold text-white mb-4">Create New Card</h3>
+            <h3 className="text-lg font-semibold text-white mb-4" style={{ color: '#ffffff' }}>Create New Card</h3>
             <div className="space-y-4">
               <div>
-                <Label htmlFor="card-type" className="text-gray-300">
+                <Label htmlFor="card-type" className="text-gray-300" style={{ color: '#d1d5db' }}>
                   Card Type
                 </Label>
                 <Select value={cardType} onValueChange={setCardType}>
@@ -87,7 +87,7 @@ export function Cards({
                 </Select>
               </div>
               <div>
-                <Label htmlFor="create-pin" className="text-gray-300">
+                <Label htmlFor="create-pin" className="text-gray-300" style={{ color: '#d1d5db' }}>
                   4-Digit PIN
                 </Label>
                 <Input
@@ -126,8 +126,8 @@ export function Cards({
           <UICard className="col-span-2 p-12 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
             <div className="text-center">
               <CreditCard className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-              <p className="text-gray-400">No cards yet</p>
-              <p className="text-sm text-gray-500 mt-2">Create your first card to get started</p>
+              <p className="text-gray-400" style={{ color: '#9ca3af' }}>No cards yet</p>
+              <p className="text-sm text-gray-500 mt-2" style={{ color: '#6b7280' }}>Create your first card to get started</p>
             </div>
           </UICard>
         ) : (
