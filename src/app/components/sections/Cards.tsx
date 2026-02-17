@@ -111,8 +111,7 @@ export function Cards({
                 </Button>
                 <Button
                   onClick={() => setShowCreateForm(false)}
-                  variant="outline"
-                  className="flex-1 border-purple-500/30 text-gray-300 hover:bg-white/5"
+                  className="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
                 >
                   Cancel
                 </Button>

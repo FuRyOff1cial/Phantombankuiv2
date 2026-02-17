@@ -1,14 +1,16 @@
 import { motion } from "motion/react";
-import { Wallet, CreditCard, Copy, Check } from "lucide-react";
-import { useState } from "react";
+import { Wallet, CreditCard, Copy, Check, X } from "lucide-react";
+import { useState, ReactNode } from "react";
 import { toast } from "sonner";
 
 interface BankHeaderProps {
-  playerName: string;
+  playerName: string | null;
   iban: string;
   balance: number;
   cash: number;
   currency: string;
+  onClose?: () => void;
+  notificationCenter?: ReactNode;
 }
 
 export function BankHeader({
@@ -17,6 +19,8 @@ export function BankHeader({
   balance,
   cash,
   currency,
+  onClose,
+  notificationCenter,
 }: BankHeaderProps) {
   const [copied, setCopied] = useState(false);
 
@@ -81,6 +85,21 @@ export function BankHeader({
               </div>
             </motion.div>
           </div>
+        </div>
+
+        {/* Right side: Notifications + Close */}
+        <div className="flex items-center gap-4">
+          {notificationCenter}
+          
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 border border-purple-500/20 text-gray-400 hover:text-white transition-all duration-200"
+              title="Close (ESC)"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
         </div>
       </div>
     </div>

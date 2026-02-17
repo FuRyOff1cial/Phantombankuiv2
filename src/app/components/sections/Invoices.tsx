@@ -1,20 +1,15 @@
-import { useState } from "react";
 import { motion } from "motion/react";
-import { FileText, Plus, Send, Check, X } from "lucide-react";
+import { FileText, Check, X, Clock, AlertCircle } from "lucide-react";
 import { Card } from "../ui/card";
 import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
-import { Textarea } from "../ui/textarea";
 import { Invoice } from "@/types/bank";
 import { formatCurrency, formatDate } from "@/utils/nui";
-import { toast } from "sonner";
+import { EmptyState } from "../EmptyState";
 
 interface InvoicesProps {
   invoices: Invoice[];
   currency: string;
   playerIdentifier: string;
-  onSendInvoice: (receiverIdentifier: string, amount: number, reason?: string) => void;
   onPayInvoice: (invoiceId: number) => void;
   onDeclineInvoice: (invoiceId: number) => void;
   isLoading: boolean;
@@ -24,135 +19,67 @@ export function Invoices({
   invoices,
   currency,
   playerIdentifier,
-  onSendInvoice,
   onPayInvoice,
   onDeclineInvoice,
   isLoading,
 }: InvoicesProps) {
-  const [showSendForm, setShowSendForm] = useState(false);
-  const [receiverIdentifier, setReceiverIdentifier] = useState("");
-  const [amount, setAmount] = useState("");
-  const [reason, setReason] = useState("");
+  // Only show received invoices
+  const receivedInvoices = invoices.filter((inv) => inv.receiver === playerIdentifier);
 
-  const handleSendInvoice = () => {
-    if (!receiverIdentifier.trim()) {
-      toast.error("Please enter a recipient identifier");
-      return;
+  // Separate by status
+  const pendingInvoices = receivedInvoices.filter((inv) => inv.status === "pending" || inv.status === "unpaid");
+  const otherInvoices = receivedInvoices.filter((inv) => inv.status !== "pending" && inv.status !== "unpaid");
+
+  const getStatusColor = (status: string) => {
+    switch (status.toLowerCase()) {
+      case "paid":
+        return "text-green-400";
+      case "pending":
+      case "unpaid":
+        return "text-yellow-400";
+      case "declined":
+      case "expired":
+        return "text-red-400";
+      default:
+        return "text-gray-400";
     }
-    const amountNum = parseFloat(amount);
-    if (isNaN(amountNum) || amountNum <= 0) {
-      toast.error("Please enter a valid amount");
-      return;
-    }
-    onSendInvoice(receiverIdentifier, amountNum, reason || undefined);
-    setReceiverIdentifier("");
-    setAmount("");
-    setReason("");
-    setShowSendForm(false);
   };
 
-  const receivedInvoices = invoices.filter((inv) => inv.receiver === playerIdentifier);
-  const sentInvoices = invoices.filter((inv) => inv.sender === playerIdentifier);
+  const isExpired = (invoice: Invoice) => {
+    if (!invoice.expires_at) return false;
+    return invoice.expires_at * 1000 < Date.now();
+  };
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-2xl font-bold text-white">Invoices</h2>
-          <p className="text-sm text-gray-400">Send and manage invoices</p>
-        </div>
-        <Button
-          onClick={() => setShowSendForm(!showSendForm)}
-          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Send Invoice
-        </Button>
+      {/* Header */}
+      <div>
+        <h2 className="text-2xl font-bold text-white">Invoices</h2>
+        <p className="text-sm text-gray-400">
+          Manage your received invoices • Sending invoices is handled by job billing systems
+        </p>
       </div>
 
-      {showSendForm && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-        >
-          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg">
-            <h3 className="text-lg font-semibold text-white mb-4">Send New Invoice</h3>
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="receiver" className="text-gray-300">
-                  Recipient Identifier
-                </Label>
-                <Input
-                  id="receiver"
-                  type="text"
-                  placeholder="Enter player identifier"
-                  value={receiverIdentifier}
-                  onChange={(e) => setReceiverIdentifier(e.target.value)}
-                  className="bg-black/30 border-purple-500/30 text-white mt-2"
-                  disabled={isLoading}
-                />
-              </div>
-              <div>
-                <Label htmlFor="invoice-amount" className="text-gray-300">
-                  Amount
-                </Label>
-                <Input
-                  id="invoice-amount"
-                  type="number"
-                  placeholder="0.00"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  className="bg-black/30 border-purple-500/30 text-white mt-2"
-                  disabled={isLoading}
-                />
-              </div>
-              <div>
-                <Label htmlFor="reason" className="text-gray-300">
-                  Reason (Optional)
-                </Label>
-                <Textarea
-                  id="reason"
-                  placeholder="Enter invoice reason..."
-                  value={reason}
-                  onChange={(e) => setReason(e.target.value)}
-                  className="bg-black/30 border-purple-500/30 text-white mt-2 resize-none"
-                  rows={3}
-                  disabled={isLoading}
-                />
-              </div>
-              <div className="flex gap-2">
-                <Button
-                  onClick={handleSendInvoice}
-                  disabled={isLoading}
-                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
-                >
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Invoice
-                </Button>
-                <Button
-                  onClick={() => setShowSendForm(false)}
-                  variant="outline"
-                  className="flex-1 border-purple-500/30 text-gray-300 hover:bg-white/5"
-                >
-                  Cancel
-                </Button>
-              </div>
-            </div>
-          </Card>
-        </motion.div>
+      {/* No invoices at all */}
+      {receivedInvoices.length === 0 && (
+        <EmptyState
+          icon={FileText}
+          title="No Invoices"
+          description="You don't have any received invoices. Invoices from businesses and services will appear here."
+        />
       )}
 
-      {/* Received Invoices */}
-      <div>
-        <h3 className="text-lg font-semibold text-white mb-4">Received Invoices</h3>
-        <div className="space-y-3">
-          {receivedInvoices.length === 0 ? (
-            <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg">
-              <p className="text-center text-gray-400">No received invoices</p>
-            </Card>
-          ) : (
-            receivedInvoices.map((invoice, index) => (
+      {/* Pending Invoices */}
+      {pendingInvoices.length > 0 && (
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <h3 className="text-lg font-semibold text-white">Pending Invoices</h3>
+            <span className="px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-400 text-xs font-medium border border-yellow-500/30">
+              {pendingInvoices.length}
+            </span>
+          </div>
+          <div className="space-y-3">
+            {pendingInvoices.map((invoice, index) => (
               <motion.div
                 key={invoice.id}
                 initial={{ opacity: 0, x: -20 }}
@@ -170,7 +97,23 @@ export function Invoices({
                         <p className="text-sm text-gray-400">
                           {invoice.reason || "No reason provided"}
                         </p>
-                        <p className="text-xs text-gray-500">{formatDate(invoice.created_at)}</p>
+                        <div className="flex items-center gap-4 mt-1">
+                          <p className="text-xs text-gray-500 flex items-center gap-1">
+                            <Clock className="w-3 h-3" />
+                            {formatDate(invoice.created_at)}
+                          </p>
+                          {isExpired(invoice) && (
+                            <p className="text-xs text-red-400 flex items-center gap-1">
+                              <AlertCircle className="w-3 h-3" />
+                              Expired
+                            </p>
+                          )}
+                          {invoice.expires_at && !isExpired(invoice) && (
+                            <p className="text-xs text-yellow-400 flex items-center gap-1">
+                              Expires: {formatDate(new Date(invoice.expires_at * 1000).toISOString())}
+                            </p>
+                          )}
+                        </div>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -180,98 +123,82 @@ export function Invoices({
                         </p>
                         <p className="text-xs text-gray-500">Amount Due</p>
                       </div>
-                      <Button
-                        onClick={() => onPayInvoice(invoice.id)}
-                        disabled={isLoading}
-                        size="sm"
-                        className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
-                      >
-                        <Check className="w-4 h-4 mr-1" />
-                        Pay
-                      </Button>
-                      <Button
-                        onClick={() => onDeclineInvoice(invoice.id)}
-                        disabled={isLoading}
-                        size="sm"
-                        variant="outline"
-                        className="border-red-500/30 text-red-400 hover:bg-red-500/10"
-                      >
-                        <X className="w-4 h-4 mr-1" />
-                        Decline
-                      </Button>
+                      <div className="flex flex-col gap-2">
+                        <Button
+                          onClick={() => onPayInvoice(invoice.id)}
+                          disabled={isLoading || isExpired(invoice)}
+                          size="sm"
+                          className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
+                        >
+                          <Check className="w-4 h-4 mr-1" />
+                          Pay
+                        </Button>
+                        <Button
+                          onClick={() => onDeclineInvoice(invoice.id)}
+                          disabled={isLoading}
+                          size="sm"
+                          className="bg-gradient-to-r from-red-500/90 to-pink-500/90 hover:from-red-500 hover:to-pink-500 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-red-500/20"
+                        >
+                          <X className="w-4 h-4 mr-1" />
+                          Decline
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </Card>
               </motion.div>
-            ))
-          )}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Sent Invoices */}
-      <div>
-        <h3 className="text-lg font-semibold text-white mb-4">Sent Invoices</h3>
-        <div className="space-y-3">
-          {sentInvoices.length === 0 ? (
-            <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg">
-              <p className="text-center text-gray-400">No sent invoices</p>
-            </Card>
-          ) : (
-            sentInvoices.map((invoice, index) => (
+      {/* Invoice History (Paid/Declined/Expired) */}
+      {otherInvoices.length > 0 && (
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-4">Invoice History</h3>
+          <div className="space-y-3">
+            {otherInvoices.map((invoice, index) => (
               <motion.div
                 key={invoice.id}
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
               >
-                <Card className="p-4 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-300">
+                <Card className="p-4 bg-[#1a1a2e]/50 border-purple-500/10 bank-glass-blur shadow-lg opacity-75">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
-                        <Send className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center">
+                        <FileText className="w-6 h-6 text-white opacity-60" />
                       </div>
                       <div>
-                        <p className="text-white font-medium">To: {invoice.receiver}</p>
+                        <p className="text-white font-medium">From: {invoice.sender}</p>
                         <p className="text-sm text-gray-400">
                           {invoice.reason || "No reason provided"}
                         </p>
-                        <p className="text-xs text-gray-500">{formatDate(invoice.created_at)}</p>
+                        <div className="flex items-center gap-4 mt-1">
+                          <p className="text-xs text-gray-500">{formatDate(invoice.created_at)}</p>
+                          <span
+                            className={`text-xs uppercase font-medium ${getStatusColor(
+                              invoice.status
+                            )}`}
+                          >
+                            {invoice.status}
+                          </span>
+                        </div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-2xl font-bold text-green-400">
-                        +{formatCurrency(invoice.amount, currency)}
+                      <p className="text-xl font-bold text-gray-400">
+                        {formatCurrency(invoice.amount, currency)}
                       </p>
-                      <div className="flex items-center gap-2 mt-1 justify-end">
-                        <div
-                          className={`w-2 h-2 rounded-full ${
-                            invoice.status === "pending"
-                              ? "bg-yellow-400 animate-pulse"
-                              : invoice.status === "paid"
-                              ? "bg-green-400"
-                              : "bg-red-400"
-                          }`}
-                        />
-                        <p
-                          className={`text-xs uppercase font-medium ${
-                            invoice.status === "pending"
-                              ? "text-yellow-400"
-                              : invoice.status === "paid"
-                              ? "text-green-400"
-                              : "text-red-400"
-                          }`}
-                        >
-                          {invoice.status}
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </Card>
               </motion.div>
-            ))
-          )}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
