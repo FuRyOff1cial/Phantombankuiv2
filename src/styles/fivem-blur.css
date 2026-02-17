@@ -43,67 +43,6 @@ html,
   scrollbar-color: #9333ea rgba(15, 15, 30, 0.5);
 }
 
-/* CRITICAL: Force all SVG icons to inherit colors properly */
-svg {
-  color: currentColor !important;
-}
-
-svg path,
-svg line,
-svg polyline,
-svg rect,
-svg circle,
-svg polygon {
-  stroke: currentColor !important;
-  fill: none !important;
-  vector-effect: non-scaling-stroke !important;
-}
-
-/* Lucide icons specific fixes - CRITICAL FOR FIVEM */
-.lucide,
-[class*="lucide"] {
-  stroke: currentColor !important;
-  fill: none !important;
-  stroke-width: 2 !important;
-  stroke-linecap: round !important;
-  stroke-linejoin: round !important;
-  /* Force visibility and brightness for FiveM/CEF */
-  opacity: 1 !important;
-  -webkit-filter: none !important;
-  filter: none !important;
-}
-
-/* Icon color classes - MUST use important for FiveM */
-svg.text-white,
-svg[class*="text-white"] {
-  stroke: #ffffff !important;
-  color: #ffffff !important;
-}
-
-svg.text-gray-400,
-svg[class*="text-gray-400"] {
-  stroke: #9ca3af !important;
-  color: #9ca3af !important;
-}
-
-svg.text-purple-400,
-svg[class*="text-purple-400"] {
-  stroke: #c084fc !important;
-  color: #c084fc !important;
-}
-
-svg.text-green-400,
-svg[class*="text-green-400"] {
-  stroke: #4ade80 !important;
-  color: #4ade80 !important;
-}
-
-svg.text-red-400,
-svg[class*="text-red-400"] {
-  stroke: #f87171 !important;
-  color: #f87171 !important;
-}
-
 /* Placeholder classes - backgrounds are set directly on components */
 .bank-glass-blur {
   position: relative;
