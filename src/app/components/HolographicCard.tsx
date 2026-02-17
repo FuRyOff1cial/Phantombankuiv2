@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { CreditCard, Lock, Unlock, Eye, EyeOff } from "lucide-react";
+import { CreditCard, Lock, Unlock, Eye, EyeOff, RotateCw, Trash2 } from "lucide-react";
 import { Card as CardType } from "@/types/bank";
 import { formatDate } from "@/utils/nui";
 import { Button } from "./ui/button";
@@ -11,6 +11,8 @@ interface HolographicCardProps {
   card: CardType;
   onChangePin: (cardId: number, oldPin: string, newPin: string) => void;
   onSetCardStatus: (cardId: number, status: "active" | "blocked") => void;
+  onReissueCard: (cardId: number) => void;
+  onCancelCard: (cardId: number) => void;
   isLoading: boolean;
 }
 
@@ -36,6 +38,8 @@ export function HolographicCard({
   card,
   onChangePin,
   onSetCardStatus,
+  onReissueCard,
+  onCancelCard,
   isLoading,
 }: HolographicCardProps) {
   const [changingPin, setChangingPin] = useState(false);
@@ -120,7 +124,9 @@ export function HolographicCard({
               whileHover={{ scale: 1.02 }}
             >
               <p className="text-2xl font-mono tracking-[0.3em] text-white drop-shadow-lg mb-2 font-bold">
-                {showDetails ? card.card_number_masked : card.card_number_masked}
+                {showDetails && card.card_number_full
+                  ? card.card_number_full
+                  : card.card_number_masked}
               </p>
               <button
                 onClick={(e) => {
@@ -141,6 +147,14 @@ export function HolographicCard({
                   {formatDate(card.expires_at)}
                 </p>
               </div>
+              {showDetails && card.cvv && (
+                <div className="mr-auto ml-8">
+                  <p className="text-xs text-white/60 uppercase tracking-wide">CVV</p>
+                  <p className="text-sm text-white font-medium drop-shadow-md font-mono">
+                    {card.cvv}
+                  </p>
+                </div>
+              )}
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-full ${
@@ -259,6 +273,24 @@ export function HolographicCard({
                     Activate Card
                   </>
                 )}
+              </Button>
+              <Button
+                onClick={() => onReissueCard(card.id)}
+                disabled={isLoading}
+                size="sm"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:scale-[1.02] transition-all duration-200"
+              >
+                <RotateCw className="w-3.5 h-3.5 mr-2" />
+                Reissue Card
+              </Button>
+              <Button
+                onClick={() => onCancelCard(card.id)}
+                disabled={isLoading}
+                size="sm"
+                className="w-full bg-red-700 hover:bg-red-800 text-white shadow-lg hover:scale-[1.02] transition-all duration-200"
+              >
+                <Trash2 className="w-3.5 h-3.5 mr-2" />
+                Cancel Card
               </Button>
             </>
           )}

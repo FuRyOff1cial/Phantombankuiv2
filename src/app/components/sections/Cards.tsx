@@ -15,6 +15,8 @@ interface CardsProps {
   onCreateCard: (pin: string, cardType: string) => void;
   onChangePin: (cardId: number, oldPin: string, newPin: string) => void;
   onSetCardStatus: (cardId: number, status: "active" | "blocked") => void;
+  onReissueCard: (cardId: number) => void;
+  onCancelCard: (cardId: number) => void;
   isLoading: boolean;
 }
 
@@ -23,6 +25,8 @@ export function Cards({
   onCreateCard,
   onChangePin,
   onSetCardStatus,
+  onReissueCard,
+  onCancelCard,
   isLoading,
 }: CardsProps) {
   const [showCreateForm, setShowCreateForm] = useState(false);
@@ -142,6 +146,8 @@ export function Cards({
                 card={card}
                 onChangePin={onChangePin}
                 onSetCardStatus={onSetCardStatus}
+                onReissueCard={onReissueCard}
+                onCancelCard={onCancelCard}
                 isLoading={isLoading}
               />
             </motion.div>

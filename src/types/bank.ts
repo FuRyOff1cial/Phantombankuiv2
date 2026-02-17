@@ -56,6 +56,8 @@ export interface Card {
   id: number;
   identifier: string;
   card_number_masked: string;
+  card_number_full?: string; // Optional: full card number (only sent when requested)
+  cvv?: string; // Optional: CVV code
   card_number_last4: string;
   card_type: string;
   status: string;

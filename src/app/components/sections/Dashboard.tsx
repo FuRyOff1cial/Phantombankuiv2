@@ -27,7 +27,44 @@ import {
   YAxis,
   Tooltip,
   CartesianGrid,
+  TooltipProps,
 } from "recharts";
+
+// Custom Tooltip Component for Pie Chart
+const CustomPieTooltip = ({ active, payload, currency }: TooltipProps<number, string> & { currency: string }) => {
+  if (active && payload && payload.length) {
+    const data = payload[0];
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="bg-[#0f0f1e]/95 backdrop-blur-md border-2 border-purple-500/50 rounded-xl p-4 shadow-2xl"
+        style={{
+          boxShadow: '0 8px 32px rgba(168, 85, 247, 0.3)',
+        }}
+      >
+        <div className="flex items-center gap-2 mb-2">
+          <div
+            className="w-3 h-3 rounded-full"
+            style={{ backgroundColor: data.payload.color }}
+          />
+          <p className="text-white font-semibold text-sm" style={{ color: '#ffffff' }}>
+            {data.name}
+          </p>
+        </div>
+        <div className="space-y-1">
+          <p className="text-2xl font-bold text-white" style={{ color: '#ffffff' }}>
+            {formatCurrency(data.value as number, currency)}
+          </p>
+          <p className="text-xs text-purple-300" style={{ color: '#d8b4fe' }}>
+            {((data.payload.percent || 0) * 100).toFixed(1)}% of total
+          </p>
+        </div>
+      </motion.div>
+    );
+  }
+  return null;
+};
 
 interface DashboardProps {
   balance: number;
@@ -451,6 +488,7 @@ export function Dashboard({
                       color: '#fff'
                     }}
                     formatter={(value: number) => formatCurrency(value, currency)}
+                    content={<CustomPieTooltip currency={currency} />}
                   />
                 </PieChart>
               </ResponsiveContainer>

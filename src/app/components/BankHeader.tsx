@@ -43,9 +43,24 @@ export function BankHeader({
             <h2 className="text-lg font-semibold text-white" style={{ color: '#ffffff' }}>
               {playerName || "Welcome"}
             </h2>
-            <p className="text-sm text-gray-400" style={{ color: '#9ca3af' }}>
-              IBAN: {iban}
-            </p>
+            <div className="flex items-center gap-2">
+              <p className="text-sm text-gray-400" style={{ color: '#9ca3af' }}>
+                {iban}
+              </p>
+              <motion.button
+                onClick={handleCopyIban}
+                className="p-1 rounded hover:bg-white/10 transition-colors duration-200"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                title="Copy IBAN"
+              >
+                {copied ? (
+                  <Check className="w-3.5 h-3.5 text-green-400" />
+                ) : (
+                  <Copy className="w-3.5 h-3.5 text-gray-400 hover:text-purple-400" />
+                )}
+              </motion.button>
+            </div>
           </div>
 
           <div className="flex items-center gap-6">

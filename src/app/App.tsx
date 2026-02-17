@@ -97,12 +97,27 @@ export default function App() {
             id: 1,
             identifier: "ABC12345",
             card_number_masked: "**** **** **** 1234",
+            card_number_full: "4532 1234 5678 1234", // Full number shown when "Show details" clicked
+            cvv: "123", // CVV shown when details visible
             card_number_last4: "1234",
-            card_type: "debit",
+            card_type: "default",
             status: "active",
             wrong_pin_count: 0,
             expires_at: Math.floor((Date.now() + 94608000000) / 1000),
             created_at: new Date(Date.now() - 7776000000).toISOString()
+          },
+          {
+            id: 2,
+            identifier: "ABC12345",
+            card_number_masked: "**** **** **** 5678",
+            card_number_full: "5412 9876 5432 5678",
+            cvv: "456",
+            card_number_last4: "5678",
+            card_type: "gold",
+            status: "active",
+            wrong_pin_count: 0,
+            expires_at: Math.floor((Date.now() + 126144000000) / 1000),
+            created_at: new Date(Date.now() - 15552000000).toISOString()
           }
         ],
         society: {
@@ -371,6 +386,36 @@ export default function App() {
     setIsLoading(false);
   };
 
+  const handleReissueCard = async (cardId: number) => {
+    setIsLoading(true);
+    try {
+      const response = await fetchNUI("reissueCard", { cardId });
+      if (response.success) {
+        toast.success("Card reissue requested successfully");
+      } else {
+        toast.error(getErrorMessage(response.message || "error"));
+      }
+    } catch (error) {
+      toast.error("Failed to request card reissue");
+    }
+    setIsLoading(false);
+  };
+
+  const handleCancelCard = async (cardId: number) => {
+    setIsLoading(true);
+    try {
+      const response = await fetchNUI("cancelCard", { cardId });
+      if (response.success) {
+        toast.success("Card cancelled successfully");
+      } else {
+        toast.error(getErrorMessage(response.message || "error"));
+      }
+    } catch (error) {
+      toast.error("Failed to cancel card");
+    }
+    setIsLoading(false);
+  };
+
   // Society handlers
   const handleDepositSociety = async (amount: number) => {
     setIsLoading(true);
@@ -615,6 +660,8 @@ export default function App() {
             onCreateCard={handleCreateCard}
             onChangePin={handleChangeCardPin}
             onSetCardStatus={handleSetCardStatus}
+            onReissueCard={handleReissueCard}
+            onCancelCard={handleCancelCard}
             isLoading={isLoading}
           />
         );
