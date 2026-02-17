@@ -60,9 +60,9 @@ export function Transfer({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+        <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-shadow duration-300">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
               <ArrowRightLeft className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -97,7 +97,8 @@ export function Transfer({
                 placeholder="0.00"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="bg-[#1a1a2e]/50 border-purple-500/30 text-white"
+                className="bg-black/30 border-purple-500/30 text-white mt-2"
+                disabled={isLoading}
               />
             </div>
 
@@ -134,7 +135,7 @@ export function Transfer({
             <Button
               onClick={handleTransfer}
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+              className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
               size="lg"
             >
               Transfer Funds

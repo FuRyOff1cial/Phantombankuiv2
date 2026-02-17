@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { CreditCard, Plus, Lock, Unlock } from "lucide-react";
+import { CreditCard, Plus } from "lucide-react";
 import { Card as UICard } from "../ui/card";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Card } from "@/types/bank";
-import { formatDate } from "@/utils/nui";
 import { toast } from "sonner";
+import { HolographicCard } from "../HolographicCard";
 
 interface CardsProps {
   cards: Card[];
@@ -28,9 +28,6 @@ export function Cards({
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [createPin, setCreatePin] = useState("");
   const [cardType, setCardType] = useState("default");
-  const [changingPin, setChangingPin] = useState<number | null>(null);
-  const [oldPin, setOldPin] = useState("");
-  const [newPin, setNewPin] = useState("");
 
   const handleCreateCard = () => {
     if (!createPin || createPin.length < 4) {
@@ -41,17 +38,6 @@ export function Cards({
     setCreatePin("");
     setCardType("default");
     setShowCreateForm(false);
-  };
-
-  const handleChangePin = (cardId: number) => {
-    if (!oldPin || !newPin || oldPin.length < 4 || newPin.length < 4) {
-      toast.error("Please enter valid 4-digit PINs");
-      return;
-    }
-    onChangePin(cardId, oldPin, newPin);
-    setChangingPin(null);
-    setOldPin("");
-    setNewPin("");
   };
 
   const cardTypeColors = {
@@ -69,7 +55,7 @@ export function Cards({
         </div>
         <Button
           onClick={() => setShowCreateForm(!showCreateForm)}
-          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
         >
           <Plus className="w-4 h-4 mr-2" />
           Create Card
@@ -119,7 +105,7 @@ export function Cards({
                 <Button
                   onClick={handleCreateCard}
                   disabled={isLoading}
-                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
                 >
                   Create Card
                 </Button>
@@ -142,144 +128,23 @@ export function Cards({
             <div className="text-center">
               <CreditCard className="w-12 h-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-400">No cards yet</p>
+              <p className="text-sm text-gray-500 mt-2">Create your first card to get started</p>
             </div>
           </UICard>
         ) : (
-          cards.map((card) => (
+          cards.map((card, index) => (
             <motion.div
               key={card.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
             >
-              <UICard className="overflow-hidden bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
-                {/* Card Visual */}
-                <div
-                  className={`p-6 bg-gradient-to-br ${
-                    cardTypeColors[card.card_type as keyof typeof cardTypeColors] ||
-                    cardTypeColors.default
-                  } relative overflow-hidden`}
-                >
-                  <div className="relative">
-                    <div className="flex items-center justify-between mb-8">
-                      <CreditCard className="w-8 h-8 text-white/80" />
-                      <span className="text-xs text-white/80 uppercase tracking-widest">
-                        {card.card_type}
-                      </span>
-                    </div>
-                    <p className="text-2xl font-mono tracking-wider text-white mb-4">
-                      {card.card_number_masked}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-xs text-white/60">Expires</p>
-                        <p className="text-sm text-white font-medium">
-                          {formatDate(card.expires_at)}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/20">
-                        {card.status === "active" ? (
-                          <>
-                            <Unlock className="w-3 h-3 text-green-300" />
-                            <span className="text-xs text-white">Active</span>
-                          </>
-                        ) : (
-                          <>
-                            <Lock className="w-3 h-3 text-red-300" />
-                            <span className="text-xs text-white">Blocked</span>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card Actions */}
-                <div className="p-4 space-y-3">
-                  {changingPin === card.id ? (
-                    <div className="space-y-3">
-                      <Input
-                        type="password"
-                        maxLength={4}
-                        placeholder="Old PIN"
-                        value={oldPin}
-                        onChange={(e) => setOldPin(e.target.value.replace(/\D/g, ""))}
-                        className="bg-black/30 border-purple-500/30 text-white"
-                        disabled={isLoading}
-                      />
-                      <Input
-                        type="password"
-                        maxLength={4}
-                        placeholder="New PIN"
-                        value={newPin}
-                        onChange={(e) => setNewPin(e.target.value.replace(/\D/g, ""))}
-                        className="bg-black/30 border-purple-500/30 text-white"
-                        disabled={isLoading}
-                      />
-                      <div className="flex gap-2">
-                        <Button
-                          onClick={() => handleChangePin(card.id)}
-                          disabled={isLoading}
-                          size="sm"
-                          className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500"
-                        >
-                          Save
-                        </Button>
-                        <Button
-                          onClick={() => {
-                            setChangingPin(null);
-                            setOldPin("");
-                            setNewPin("");
-                          }}
-                          size="sm"
-                          variant="outline"
-                          className="flex-1 border-purple-500/30 text-gray-300"
-                        >
-                          Cancel
-                        </Button>
-                      </div>
-                    </div>
-                  ) : (
-                    <>
-                      <Button
-                        onClick={() => setChangingPin(card.id)}
-                        disabled={isLoading}
-                        variant="outline"
-                        size="sm"
-                        className="w-full border-purple-500/30 text-gray-300 hover:bg-white/5"
-                      >
-                        Change PIN
-                      </Button>
-                      <Button
-                        onClick={() =>
-                          onSetCardStatus(
-                            card.id,
-                            card.status === "active" ? "blocked" : "active"
-                          )
-                        }
-                        disabled={isLoading}
-                        size="sm"
-                        className={`w-full ${
-                          card.status === "active"
-                            ? "bg-gradient-to-r from-red-500 to-pink-500"
-                            : "bg-gradient-to-r from-green-500 to-emerald-500"
-                        }`}
-                      >
-                        {card.status === "active" ? (
-                          <>
-                            <Lock className="w-3 h-3 mr-2" />
-                            Block Card
-                          </>
-                        ) : (
-                          <>
-                            <Unlock className="w-3 h-3 mr-2" />
-                            Activate Card
-                          </>
-                        )}
-                      </Button>
-                    </>
-                  )}
-                </div>
-              </UICard>
+              <HolographicCard
+                card={card}
+                onChangePin={onChangePin}
+                onSetCardStatus={onSetCardStatus}
+                isLoading={isLoading}
+              />
             </motion.div>
           ))
         )}

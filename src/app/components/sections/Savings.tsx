@@ -69,9 +69,9 @@ export function Savings({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <Card className="p-8 bg-gradient-to-br from-green-500/20 to-emerald-500/20 border-green-500/30 bank-glass-blur">
+        <Card className="p-8 bg-gradient-to-br from-green-500/20 to-emerald-500/20 border-green-500/30 bank-glass-blur shadow-xl shadow-green-500/20">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-green-500/50">
               <PiggyBank className="w-8 h-8 text-white" />
             </div>
             <div className="flex-1">
@@ -126,9 +126,9 @@ export function Savings({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+          <Card className="card-deposit p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-green-500/10 transition-all duration-300">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+              <div className="icon-deposit w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center transition-all duration-300">
                 <ArrowDownLeft className="w-5 h-5 text-green-400" />
               </div>
               <h3 className="text-lg font-semibold text-white">Deposit</h3>
@@ -137,18 +137,19 @@ export function Savings({
               <div>
                 <Label className="text-gray-300">Amount</Label>
                 <Input
+                  id="deposit-amount"
                   type="number"
                   placeholder="0.00"
                   value={depositAmount}
                   onChange={(e) => setDepositAmount(e.target.value)}
-                  className="bg-black/30 border-purple-500/30 text-white mt-2"
+                  className="bg-black/30 border-purple-500/30 text-white mt-2 input-deposit"
                   disabled={isLoading}
                 />
               </div>
               <Button
                 onClick={handleDeposit}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-500"
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
               >
                 Deposit to Savings
               </Button>
@@ -161,9 +162,9 @@ export function Savings({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+          <Card className="card-withdraw p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-red-500/10 transition-all duration-300">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
+              <div className="icon-withdraw w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center transition-all duration-300">
                 <ArrowUpRight className="w-5 h-5 text-red-400" />
               </div>
               <h3 className="text-lg font-semibold text-white">Withdraw</h3>
@@ -176,14 +177,14 @@ export function Savings({
                   placeholder="0.00"
                   value={withdrawAmount}
                   onChange={(e) => setWithdrawAmount(e.target.value)}
-                  className="bg-black/30 border-purple-500/30 text-white mt-2"
+                  className="bg-black/30 border-purple-500/30 text-white mt-2 input-withdraw"
                   disabled={isLoading}
                 />
               </div>
               <Button
                 onClick={handleWithdraw}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-red-500 to-pink-500"
+                className="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 hover:scale-[1.02] transition-all duration-200"
               >
                 Withdraw from Savings
               </Button>
@@ -198,7 +199,7 @@ export function Savings({
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+        <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg">
           <h3 className="text-lg font-semibold text-white mb-4">Interest Information</h3>
           <div className="space-y-3">
             <div className="flex justify-between items-center p-3 rounded-lg bg-black/20 border border-purple-500/10">

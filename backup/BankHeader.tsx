@@ -1,7 +1,5 @@
 import { motion } from "motion/react";
-import { Wallet, CreditCard, Copy, Check } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
+import { Wallet, CreditCard } from "lucide-react";
 
 interface BankHeaderProps {
   playerName: string;
@@ -18,19 +16,6 @@ export function BankHeader({
   cash,
   currency,
 }: BankHeaderProps) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyIban = async () => {
-    try {
-      await navigator.clipboard.writeText(iban);
-      setCopied(true);
-      toast.success("IBAN copied to clipboard!");
-      setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
-      toast.error("Failed to copy IBAN");
-    }
-  };
-
   return (
     <div className="h-20 border-b border-purple-500/20 bg-[#0f0f1e] bank-header-glass">
       <div className="h-full px-8 flex items-center justify-between">
@@ -39,19 +24,7 @@ export function BankHeader({
             <h2 className="text-lg font-semibold text-white">
               {playerName || "Welcome"}
             </h2>
-            <motion.button
-              onClick={handleCopyIban}
-              className="flex items-center gap-2 text-sm text-purple-300 font-mono hover:text-purple-200 transition-colors group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span>{iban}</span>
-              {copied ? (
-                <Check className="w-3.5 h-3.5 text-green-400" />
-              ) : (
-                <Copy className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              )}
-            </motion.button>
+            <p className="text-sm text-purple-300 font-mono">{iban}</p>
           </div>
 
           <div className="flex items-center gap-6">

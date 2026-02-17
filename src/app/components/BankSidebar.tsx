@@ -47,6 +47,18 @@ export function BankSidebar({
       show: true,
     },
     {
+      id: "cards",
+      label: "Cards",
+      icon: CreditCard,
+      show: config.enableCards && !isAtm,
+    },
+    {
+      id: "savings",
+      label: "Savings",
+      icon: PiggyBank,
+      show: config.enableSavingsAccounts && !isAtm,
+    },
+    {
       id: "loans",
       label: "Loans",
       icon: Landmark,
@@ -57,12 +69,6 @@ export function BankSidebar({
       label: "Invoices",
       icon: FileText,
       show: config.enableInvoices && !isAtm,
-    },
-    {
-      id: "cards",
-      label: "Cards",
-      icon: CreditCard,
-      show: config.enableCards && !isAtm,
     },
     {
       id: "society",
@@ -76,33 +82,32 @@ export function BankSidebar({
       icon: Users,
       show: config.enableSharedAccounts && !isAtm,
     },
-    {
-      id: "savings",
-      label: "Savings",
-      icon: PiggyBank,
-      show: config.enableSavingsAccounts && !isAtm,
-    },
   ];
 
   return (
-    <div className="w-64 h-full bg-[#0f0f1e] bank-sidebar-glass border-r border-purple-500/20 flex flex-col">
+    <div className="w-64 h-full bg-[#0f0f1e] bank-sidebar-glass border-r border-purple-500/20 flex flex-col shadow-2xl shadow-black/50">
       <div className="p-6 flex-1">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
-            <Landmark className="w-6 h-6 text-white" />
+        <motion.div
+          className="flex items-center gap-3 p-4 border-b border-purple-500/20"
+          whileHover={{ scale: 1.02 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center shadow-lg">
+            <Building2 className="w-5 h-5 text-white" />
           </div>
           <div>
             <h1 className="text-xl font-bold text-white">Phantom Bank</h1>
-            <p className="text-xs text-purple-300">{isAtm ? "ATM Mode" : "Full Access"}</p>
+            {isAtm && <p className="text-xs text-purple-300">ATM Mode</p>}
           </div>
-        </div>
+        </motion.div>
 
         <nav className="space-y-1">
           {navItems
             .filter((item) => item.show)
-            .map((item) => {
+            .map((item, index) => {
               const Icon = item.icon;
               const isActive = activeSection === item.id;
+              const showBadge = item.id === "shared" && sharedAccounts.length > 0;
 
               return (
                 <motion.button
@@ -113,22 +118,51 @@ export function BankSidebar({
                     transition-all duration-200 relative group
                     ${
                       isActive
-                        ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white"
+                        ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white shadow-lg shadow-purple-500/20"
                         : "text-gray-400 hover:text-white hover:bg-white/5"
                     }
                   `}
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ 
+                    delay: index * 0.05,
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 30
+                  }}
                 >
                   {isActive && (
-                    <motion.div
-                      className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-blue-500 rounded-r"
-                      layoutId="activeIndicator"
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
+                    <>
+                      <motion.div
+                        className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-blue-500 rounded-r shadow-lg shadow-purple-500/50"
+                        layoutId="activeIndicator"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-lg blur-sm"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </>
                   )}
-                  <Icon className="w-5 h-5" />
-                  <span className="font-medium">{item.label}</span>
+                  <Icon
+                    className={`w-5 h-5 relative z-10 ${
+                      isActive ? "drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]" : ""
+                    }`}
+                  />
+                  <span className="font-medium relative z-10">{item.label}</span>
+                  {showBadge && (
+                    <motion.span
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="ml-auto bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-lg shadow-purple-500/50 relative z-10"
+                    >
+                      {sharedAccounts.length}
+                    </motion.span>
+                  )}
                 </motion.button>
               );
             })}
@@ -139,11 +173,13 @@ export function BankSidebar({
       <div className="p-6 border-t border-purple-500/20">
         <motion.button
           onClick={onLogout}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-white hover:bg-red-500/10 transition-colors"
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all duration-200 group"
           whileHover={{ x: 4 }}
           whileTap={{ scale: 0.98 }}
         >
-          <LogOut className="w-5 h-5" />
+          <LogOut
+            className="w-5 h-5 group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.5)] transition-all duration-200"
+          />
           <span className="font-medium">Logout</span>
         </motion.button>
       </div>

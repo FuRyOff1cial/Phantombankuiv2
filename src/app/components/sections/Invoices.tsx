@@ -63,7 +63,7 @@ export function Invoices({
         </div>
         <Button
           onClick={() => setShowSendForm(!showSendForm)}
-          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
         >
           <Plus className="w-4 h-4 mr-2" />
           Send Invoice
@@ -76,7 +76,7 @@ export function Invoices({
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg">
             <h3 className="text-lg font-semibold text-white mb-4">Send New Invoice</h3>
             <div className="space-y-4">
               <div>
@@ -125,7 +125,7 @@ export function Invoices({
                 <Button
                   onClick={handleSendInvoice}
                   disabled={isLoading}
-                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
                 >
                   <Send className="w-4 h-4 mr-2" />
                   Send Invoice
@@ -148,20 +148,21 @@ export function Invoices({
         <h3 className="text-lg font-semibold text-white mb-4">Received Invoices</h3>
         <div className="space-y-3">
           {receivedInvoices.length === 0 ? (
-            <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+            <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg">
               <p className="text-center text-gray-400">No received invoices</p>
             </Card>
           ) : (
-            receivedInvoices.map((invoice) => (
+            receivedInvoices.map((invoice, index) => (
               <motion.div
                 key={invoice.id}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
               >
-                <Card className="p-4 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+                <Card className="p-4 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
                         <FileText className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -174,8 +175,8 @@ export function Invoices({
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="text-right mr-4">
-                        <p className="text-2xl font-bold text-white">
-                          {formatCurrency(invoice.amount, currency)}
+                        <p className="text-2xl font-bold text-red-400">
+                          -{formatCurrency(invoice.amount, currency)}
                         </p>
                         <p className="text-xs text-gray-500">Amount Due</p>
                       </div>
@@ -183,7 +184,7 @@ export function Invoices({
                         onClick={() => onPayInvoice(invoice.id)}
                         disabled={isLoading}
                         size="sm"
-                        className="bg-gradient-to-r from-green-500 to-emerald-500"
+                        className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
                       >
                         <Check className="w-4 h-4 mr-1" />
                         Pay
@@ -212,20 +213,21 @@ export function Invoices({
         <h3 className="text-lg font-semibold text-white mb-4">Sent Invoices</h3>
         <div className="space-y-3">
           {sentInvoices.length === 0 ? (
-            <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+            <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg">
               <p className="text-center text-gray-400">No sent invoices</p>
             </Card>
           ) : (
-            sentInvoices.map((invoice) => (
+            sentInvoices.map((invoice, index) => (
               <motion.div
                 key={invoice.id}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.05 }}
               >
-                <Card className="p-4 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+                <Card className="p-4 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-300">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
                         <Send className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -237,12 +239,30 @@ export function Invoices({
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-2xl font-bold text-white">
-                        {formatCurrency(invoice.amount, currency)}
+                      <p className="text-2xl font-bold text-green-400">
+                        +{formatCurrency(invoice.amount, currency)}
                       </p>
                       <div className="flex items-center gap-2 mt-1 justify-end">
-                        <div className="w-2 h-2 rounded-full bg-yellow-400" />
-                        <p className="text-xs text-yellow-400 uppercase">{invoice.status}</p>
+                        <div
+                          className={`w-2 h-2 rounded-full ${
+                            invoice.status === "pending"
+                              ? "bg-yellow-400 animate-pulse"
+                              : invoice.status === "paid"
+                              ? "bg-green-400"
+                              : "bg-red-400"
+                          }`}
+                        />
+                        <p
+                          className={`text-xs uppercase font-medium ${
+                            invoice.status === "pending"
+                              ? "text-yellow-400"
+                              : invoice.status === "paid"
+                              ? "text-green-400"
+                              : "text-red-400"
+                          }`}
+                        >
+                          {invoice.status}
+                        </p>
                       </div>
                     </div>
                   </div>

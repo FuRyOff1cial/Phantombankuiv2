@@ -16,8 +16,3 @@
 .bank-header-glass {
   position: relative;
 }
-
-/* 3D Card perspective effects */
-.perspective-1000 {
-  perspective: 1000px;
-}

@@ -133,9 +133,9 @@ export function Society({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+          <Card className="card-deposit p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur transition-all duration-300">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+              <div className="icon-deposit w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center transition-all duration-300">
                 <ArrowDownLeft className="w-5 h-5 text-green-400" />
               </div>
               <h3 className="text-lg font-semibold text-white">Deposit Cash</h3>
@@ -148,14 +148,14 @@ export function Society({
                   placeholder="0.00"
                   value={depositAmount}
                   onChange={(e) => setDepositAmount(e.target.value)}
-                  className="bg-black/30 border-purple-500/30 text-white mt-2"
+                  className="bg-black/30 border-purple-500/30 text-white mt-2 input-deposit"
                   disabled={isLoading}
                 />
               </div>
               <Button
                 onClick={handleDeposit}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-500"
+                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-[1.02] transition-transform duration-200"
               >
                 Deposit
               </Button>
@@ -169,9 +169,9 @@ export function Society({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+          <Card className="card-withdraw p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur transition-all duration-300">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
+              <div className="icon-withdraw w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center transition-all duration-300">
                 <ArrowUpRight className="w-5 h-5 text-red-400" />
               </div>
               <h3 className="text-lg font-semibold text-white">Withdraw Cash</h3>
@@ -184,14 +184,14 @@ export function Society({
                   placeholder="0.00"
                   value={withdrawAmount}
                   onChange={(e) => setWithdrawAmount(e.target.value)}
-                  className="bg-black/30 border-purple-500/30 text-white mt-2"
+                  className="bg-black/30 border-purple-500/30 text-white mt-2 input-withdraw"
                   disabled={isLoading}
                 />
               </div>
               <Button
                 onClick={handleWithdraw}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-red-500 to-pink-500"
+                className="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:scale-[1.02] transition-transform duration-200"
               >
                 Withdraw
               </Button>
@@ -205,9 +205,9 @@ export function Society({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+          <Card className="card-transfer-blue p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur transition-all duration-300">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+              <div className="icon-transfer-blue w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center transition-all duration-300">
                 <ArrowRightLeft className="w-5 h-5 text-blue-400" />
               </div>
               <h3 className="text-lg font-semibold text-white">Bank → Society</h3>
@@ -220,14 +220,14 @@ export function Society({
                   placeholder="0.00"
                   value={transferToAmount}
                   onChange={(e) => setTransferToAmount(e.target.value)}
-                  className="bg-black/30 border-purple-500/30 text-white mt-2"
+                  className="bg-black/30 border-purple-500/30 text-white mt-2 input-transfer-blue"
                   disabled={isLoading}
                 />
               </div>
               <Button
                 onClick={handleTransferTo}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-500"
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:scale-[1.02] transition-transform duration-200"
               >
                 Transfer to Society
               </Button>
@@ -241,9 +241,9 @@ export function Society({
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+          <Card className="card-transfer-orange p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur transition-all duration-300">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center">
+              <div className="icon-transfer-orange w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center transition-all duration-300">
                 <ArrowRightLeft className="w-5 h-5 text-orange-400" />
               </div>
               <h3 className="text-lg font-semibold text-white">Society → Bank</h3>
@@ -256,14 +256,14 @@ export function Society({
                   placeholder="0.00"
                   value={transferFromAmount}
                   onChange={(e) => setTransferFromAmount(e.target.value)}
-                  className="bg-black/30 border-purple-500/30 text-white mt-2"
+                  className="bg-black/30 border-purple-500/30 text-white mt-2 input-transfer-orange"
                   disabled={isLoading}
                 />
               </div>
               <Button
                 onClick={handleTransferFrom}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-orange-500 to-red-500"
+                className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:scale-[1.02] transition-transform duration-200"
               >
                 Transfer to Bank
               </Button>

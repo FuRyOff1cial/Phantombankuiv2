@@ -65,7 +65,7 @@ export function Loans({
         </div>
         <Button
           onClick={() => setShowRequestForm(!showRequestForm)}
-          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
         >
           <Plus className="w-4 h-4 mr-2" />
           Request Loan
@@ -78,7 +78,7 @@ export function Loans({
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
         >
-          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+          <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg">
             <h3 className="text-lg font-semibold text-white mb-4">Request New Loan</h3>
             <div className="space-y-4">
               <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/30">
@@ -106,7 +106,7 @@ export function Loans({
                 <Button
                   onClick={handleRequestLoan}
                   disabled={isLoading}
-                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
                 >
                   Submit Request
                 </Button>
@@ -138,10 +138,10 @@ export function Loans({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur">
+              <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-shadow duration-300">
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
                       <Landmark className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -158,6 +158,28 @@ export function Loans({
                     <span className="text-xs text-orange-300 uppercase font-medium">
                       {loan.status}
                     </span>
+                  </div>
+                </div>
+
+                {/* Progress Bar */}
+                <div className="mb-6">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm text-gray-400">Loan Progress</span>
+                    <span className="text-sm font-medium text-white">
+                      {Math.round(((loan.total_to_pay - loan.remaining_balance) / loan.total_to_pay) * 100)}% Paid
+                    </span>
+                  </div>
+                  <div className="relative w-full h-3 bg-black/30 rounded-full overflow-hidden border border-purple-500/20">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: `${((loan.total_to_pay - loan.remaining_balance) / loan.total_to_pay) * 100}%` }}
+                      transition={{ duration: 1, ease: "easeOut" }}
+                      className="absolute top-0 left-0 h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-lg shadow-green-500/50"
+                    />
+                  </div>
+                  <div className="flex justify-between mt-2 text-xs text-gray-500">
+                    <span>{formatCurrency(loan.total_to_pay - loan.remaining_balance, currency)} paid</span>
+                    <span>{formatCurrency(loan.remaining_balance, currency)} left</span>
                   </div>
                 </div>
 
@@ -228,7 +250,7 @@ export function Loans({
                   <Button
                     onClick={() => handlePayLoan(loan.id)}
                     disabled={isLoading}
-                    className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                    className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
                   >
                     Pay
                   </Button>
