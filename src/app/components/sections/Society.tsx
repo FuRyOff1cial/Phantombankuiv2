@@ -106,9 +106,9 @@ export function Society({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <Card className="p-8 bg-gradient-to-br from-purple-500/20 to-blue-500/20 border-purple-500/30 bank-glass-blur">
+        <Card className="p-8 bg-purple-900/50 border-2 border-purple-500/60 bank-glass-blur shadow-xl shadow-purple-500/20">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-xl bg-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/50">
               <Building2 className="w-8 h-8 text-white" />
             </div>
             <div>
@@ -155,7 +155,7 @@ export function Society({
               <Button
                 onClick={handleDeposit}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-[1.02] transition-transform duration-200"
+                className="w-full bg-green-600 hover:bg-green-700 hover:scale-[1.02] transition-transform duration-200"
               >
                 Deposit
               </Button>
@@ -191,7 +191,7 @@ export function Society({
               <Button
                 onClick={handleWithdraw}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:scale-[1.02] transition-transform duration-200"
+                className="w-full bg-red-600 hover:bg-red-700 hover:scale-[1.02] transition-transform duration-200"
               >
                 Withdraw
               </Button>
@@ -227,7 +227,7 @@ export function Society({
               <Button
                 onClick={handleTransferTo}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:scale-[1.02] transition-transform duration-200"
+                className="w-full bg-blue-600 hover:bg-blue-700 hover:scale-[1.02] transition-transform duration-200"
               >
                 Transfer to Society
               </Button>
@@ -263,7 +263,7 @@ export function Society({
               <Button
                 onClick={handleTransferFrom}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:scale-[1.02] transition-transform duration-200"
+                className="w-full bg-orange-600 hover:bg-orange-700 hover:scale-[1.02] transition-transform duration-200"
               >
                 Transfer to Bank
               </Button>

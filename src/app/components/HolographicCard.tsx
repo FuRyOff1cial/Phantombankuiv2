@@ -205,7 +205,7 @@ export function HolographicCard({
                   onClick={handleChangePinClick}
                   disabled={isLoading || !oldPin || !newPin || oldPin.length < 4 || newPin.length < 4}
                   size="sm"
-                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
+                  className="flex-1 bg-green-600 hover:bg-green-700 hover:scale-[1.02] transition-all duration-200"
                 >
                   Save PIN
                 </Button>
@@ -216,7 +216,7 @@ export function HolographicCard({
                     setNewPin("");
                   }}
                   size="sm"
-                  className="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
+                  className="flex-1 bg-gray-600 hover:bg-gray-700 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
                 >
                   Cancel
                 </Button>
@@ -228,7 +228,7 @@ export function HolographicCard({
                 onClick={() => setChangingPin(true)}
                 disabled={isLoading}
                 size="sm"
-                className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white shadow-lg hover:scale-[1.02] transition-all duration-200"
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:scale-[1.02] transition-all duration-200"
               >
                 <Lock className="w-3.5 h-3.5 mr-2" />
                 Change PIN
@@ -244,8 +244,8 @@ export function HolographicCard({
                 size="sm"
                 className={`w-full hover:scale-[1.02] transition-all duration-200 shadow-lg ${
                   card.status === "active"
-                    ? "bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600"
-                    : "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                    ? "bg-red-600 hover:bg-red-700"
+                    : "bg-green-600 hover:bg-green-700"
                 }`}
               >
                 {card.status === "active" ? (

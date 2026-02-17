@@ -55,7 +55,7 @@ export function Cards({
         </div>
         <Button
           onClick={() => setShowCreateForm(!showCreateForm)}
-          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
+          className="bg-purple-600 hover:bg-purple-700 hover:scale-[1.02] transition-all duration-200"
         >
           <Plus className="w-4 h-4 mr-2" />
           Create Card
@@ -105,13 +105,13 @@ export function Cards({
                 <Button
                   onClick={handleCreateCard}
                   disabled={isLoading}
-                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
+                  className="flex-1 bg-green-600 hover:bg-green-700 hover:scale-[1.02] transition-all duration-200"
                 >
                   Create Card
                 </Button>
                 <Button
                   onClick={() => setShowCreateForm(false)}
-                  className="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
+                  className="flex-1 bg-gray-600 hover:bg-gray-700 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
                 >
                   Cancel
                 </Button>

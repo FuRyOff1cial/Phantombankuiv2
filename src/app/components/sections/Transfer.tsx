@@ -60,14 +60,16 @@ export function Transfer({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <Card className="p-8 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-shadow duration-300">
+        <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/30 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300">
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+            <div className="w-12 h-12 rounded-lg bg-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/30">
               <ArrowRightLeft className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-white">Transfer Funds</h2>
-              <p className="text-sm text-gray-400">Send money to another account</p>
+              <h3 className="text-lg font-semibold text-white">Send Money</h3>
+              <p className="text-sm text-gray-400">
+                Transfer funds to another player
+              </p>
             </div>
           </div>
 
@@ -135,7 +137,7 @@ export function Transfer({
             <Button
               onClick={handleTransfer}
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
+              className="w-full bg-purple-600 hover:bg-purple-700 hover:scale-[1.02] transition-all duration-200"
               size="lg"
             >
               Transfer Funds

@@ -33,19 +33,19 @@ export function ConfirmDialog({
       bg: "from-red-500/20 to-pink-500/20",
       border: "border-red-500/30",
       icon: "text-red-400",
-      button: "from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600",
+      button: "bg-red-600 hover:bg-red-700",
     },
     warning: {
       bg: "from-orange-500/20 to-yellow-500/20",
       border: "border-orange-500/30",
       icon: "text-orange-400",
-      button: "from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600",
+      button: "bg-orange-600 hover:bg-orange-700",
     },
     info: {
       bg: "from-blue-500/20 to-cyan-500/20",
       border: "border-blue-500/30",
       icon: "text-blue-400",
-      button: "from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600",
+      button: "bg-blue-600 hover:bg-blue-700",
     },
   };
 
@@ -73,7 +73,7 @@ export function ConfirmDialog({
               className="w-full max-w-md mx-4"
             >
               <Card
-                className={`p-6 bg-gradient-to-br ${colors.bg} ${colors.border} bank-glass-blur shadow-2xl`}
+                className={`p-6 bg-[#1a1a2e] ${colors.border} border-2 bank-glass-blur shadow-2xl`}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
@@ -100,14 +100,14 @@ export function ConfirmDialog({
                   <Button
                     onClick={onConfirm}
                     disabled={isLoading}
-                    className={`flex-1 bg-gradient-to-r ${colors.button} hover:scale-[1.02] transition-all duration-200`}
+                    className={`flex-1 ${colors.button} hover:scale-[1.02] transition-all duration-200`}
                   >
                     {confirmText}
                   </Button>
                   <Button
                     onClick={onClose}
                     disabled={isLoading}
-                    className="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
+                    className="flex-1 bg-gray-600 hover:bg-gray-700 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
                   >
                     {cancelText}
                   </Button>

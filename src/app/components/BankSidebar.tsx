@@ -85,10 +85,10 @@ export function BankSidebar({
   ];
 
   return (
-    <div className="w-64 h-full bg-[#0f0f1e] bank-sidebar-glass border-r border-purple-500/20 flex flex-col shadow-2xl shadow-black/50">
+    <div className="w-64 h-full bg-[#0f0f1e] bank-sidebar-glass border-r border-purple-500/30 flex flex-col shadow-2xl shadow-black/50">
       <div className="p-6 flex-1">
         <motion.div
-          className="flex items-center gap-3 p-4 border-b border-purple-500/20"
+          className="flex items-center gap-3 p-4 border-b border-purple-500/30"
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.2 }}
         >
@@ -101,7 +101,7 @@ export function BankSidebar({
           </div>
         </motion.div>
 
-        <nav className="space-y-1">
+        <nav className="space-y-1 mt-4">
           {navItems
             .filter((item) => item.show)
             .map((item, index) => {
@@ -118,7 +118,7 @@ export function BankSidebar({
                     transition-all duration-200 relative group
                     ${
                       isActive
-                        ? "bg-purple-900/30 text-white shadow-lg shadow-purple-500/20"
+                        ? "bg-purple-900/50 text-white shadow-lg shadow-purple-500/20 border border-purple-500/50"
                         : "text-gray-400 hover:text-white hover:bg-white/5"
                     }
                   `}
@@ -165,7 +165,7 @@ export function BankSidebar({
       </div>
 
       {/* Logout Button */}
-      <div className="p-6 border-t border-purple-500/20">
+      <div className="p-6 border-t border-purple-500/30">
         <motion.button
           onClick={onLogout}
           className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:text-red-400 hover:bg-red-500/10 transition-all duration-200 group"

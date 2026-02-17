@@ -89,7 +89,7 @@ export function Invoices({
                 <Card className="p-4 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                      <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
                         <FileText className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -128,7 +128,7 @@ export function Invoices({
                           onClick={() => onPayInvoice(invoice.id)}
                           disabled={isLoading || isExpired(invoice)}
                           size="sm"
-                          className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
+                          className="bg-green-600 hover:bg-green-700 hover:scale-[1.02] transition-all duration-200"
                         >
                           <Check className="w-4 h-4 mr-1" />
                           Pay
@@ -137,7 +137,7 @@ export function Invoices({
                           onClick={() => onDeclineInvoice(invoice.id)}
                           disabled={isLoading}
                           size="sm"
-                          className="bg-gradient-to-r from-red-500/90 to-pink-500/90 hover:from-red-500 hover:to-pink-500 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-red-500/20"
+                          className="bg-red-600 hover:bg-red-700 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-red-500/20"
                         >
                           <X className="w-4 h-4 mr-1" />
                           Decline
@@ -167,7 +167,7 @@ export function Invoices({
                 <Card className="p-4 bg-[#1a1a2e]/50 border-purple-500/10 bank-glass-blur shadow-lg opacity-75">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-lg bg-gray-600 flex items-center justify-center">
                         <FileText className="w-6 h-6 text-white opacity-60" />
                       </div>
                       <div>

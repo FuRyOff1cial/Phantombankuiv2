@@ -136,7 +136,7 @@ export function SharedAccounts({
         </div>
         <Button
           onClick={() => setShowCreateForm(!showCreateForm)}
-          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
+          className="bg-purple-600 hover:bg-purple-700 hover:scale-[1.02] transition-all duration-200"
         >
           <Plus className="w-4 h-4 mr-2" />
           Create Account
@@ -170,13 +170,13 @@ export function SharedAccounts({
                 <Button
                   onClick={handleCreateAccount}
                   disabled={isLoading}
-                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
+                  className="flex-1 bg-green-600 hover:bg-green-700 hover:scale-[1.02] transition-all duration-200"
                 >
                   Create
                 </Button>
                 <Button
                   onClick={() => setShowCreateForm(false)}
-                  className="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
+                  className="flex-1 bg-gray-600 hover:bg-gray-700 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
                 >
                   Cancel
                 </Button>
@@ -202,7 +202,7 @@ export function SharedAccounts({
           >
             <Card className="p-6 bg-[#1a1a2e] border-purple-500/30 bank-glass-blur shadow-2xl shadow-purple-500/20">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/40">
+                <div className="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/40">
                   <Users className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-white">Manage Members</h3>
@@ -221,7 +221,7 @@ export function SharedAccounts({
                   <Button
                     onClick={handleAddMember}
                     disabled={isLoading}
-                    className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
+                    className="bg-green-600 hover:bg-green-700 hover:scale-[1.02] transition-all duration-200"
                   >
                     <UserPlus className="w-4 h-4" />
                   </Button>
@@ -271,7 +271,7 @@ export function SharedAccounts({
 
               <Button
                 onClick={() => setManagingAccount(null)}
-                className="w-full mt-6 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
+                className="w-full mt-6 bg-purple-600 hover:bg-purple-700 hover:scale-[1.02] transition-all duration-200"
               >
                 Close
               </Button>
@@ -299,7 +299,7 @@ export function SharedAccounts({
               <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-shadow duration-300">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
                       <Users className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -341,7 +341,7 @@ export function SharedAccounts({
                         onClick={() => handleDeposit(account.id)}
                         disabled={isLoading}
                         size="sm"
-                        className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                        className="bg-green-600 hover:bg-green-700"
                       >
                         <ArrowDownLeft className="w-4 h-4" />
                       </Button>
@@ -368,7 +368,7 @@ export function SharedAccounts({
                         onClick={() => handleWithdraw(account.id, account.balance)}
                         disabled={isLoading}
                         size="sm"
-                        className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600"
+                        className="bg-red-600 hover:bg-red-700"
                       >
                         <ArrowUpRight className="w-4 h-4" />
                       </Button>
@@ -380,7 +380,7 @@ export function SharedAccounts({
                   <Button
                     onClick={() => handleManageMembers(account.id)}
                     disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30 text-white hover:from-purple-500/30 hover:to-blue-500/30 hover:border-purple-400 transition-all duration-200 shadow-md"
+                    className="w-full bg-purple-900/40 border border-purple-500/40 text-white hover:bg-purple-800/50 hover:border-purple-400/60 transition-all duration-200 shadow-md"
                   >
                     <Users className="w-4 h-4 mr-2" />
                     Manage Members

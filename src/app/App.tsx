@@ -672,7 +672,7 @@ export default function App() {
   return (
     <>
       <BankToaster />
-      <div className="fixed inset-0 bg-[#0a0a14] flex items-center justify-center p-4">
+      <div className="fixed inset-0 flex items-center justify-center p-4">
         {/* Main Container */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}

@@ -65,7 +65,7 @@ export function Loans({
         </div>
         <Button
           onClick={() => setShowRequestForm(!showRequestForm)}
-          className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
+          className="bg-purple-600 hover:bg-purple-700 hover:scale-[1.02] transition-all duration-200"
         >
           <Plus className="w-4 h-4 mr-2" />
           Request Loan
@@ -106,13 +106,13 @@ export function Loans({
                 <Button
                   onClick={handleRequestLoan}
                   disabled={isLoading}
-                  className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
+                  className="flex-1 bg-green-600 hover:bg-green-700 hover:scale-[1.02] transition-all duration-200"
                 >
                   Submit Request
                 </Button>
                 <Button
                   onClick={() => setShowRequestForm(false)}
-                  className="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
+                  className="flex-1 bg-gray-600 hover:bg-gray-700 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
                 >
                   Cancel
                 </Button>
@@ -140,7 +140,7 @@ export function Loans({
               <Card className="p-6 bg-[#1a1a2e]/88 border-purple-500/20 bank-glass-blur shadow-lg hover:shadow-xl hover:shadow-purple-500/10 transition-shadow duration-300">
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-lg shadow-orange-500/30">
+                    <div className="w-12 h-12 rounded-lg bg-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/30">
                       <Landmark className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -173,7 +173,7 @@ export function Loans({
                       initial={{ width: 0 }}
                       animate={{ width: `${((loan.total_to_pay - loan.remaining_balance) / loan.total_to_pay) * 100}%` }}
                       transition={{ duration: 1, ease: "easeOut" }}
-                      className="absolute top-0 left-0 h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded-full shadow-lg shadow-green-500/50"
+                      className="absolute top-0 left-0 h-full bg-green-600 rounded-full shadow-lg shadow-green-500/50"
                     />
                   </div>
                   <div className="flex justify-between mt-2 text-xs text-gray-500">
@@ -249,7 +249,7 @@ export function Loans({
                   <Button
                     onClick={() => handlePayLoan(loan.id)}
                     disabled={isLoading}
-                    className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
+                    className="bg-green-600 hover:bg-green-700 hover:scale-[1.02] transition-all duration-200"
                   >
                     Pay
                   </Button>

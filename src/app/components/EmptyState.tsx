@@ -28,7 +28,7 @@ export function EmptyState({
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.1, type: "spring", stiffness: 400, damping: 20 }}
-        className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 border border-purple-500/30 flex items-center justify-center mb-6 shadow-lg shadow-purple-500/20"
+        className="w-24 h-24 rounded-full bg-purple-900/30 border border-purple-500/30 flex items-center justify-center mb-6 shadow-lg shadow-purple-500/20"
       >
         <Icon className="w-12 h-12 text-purple-400" />
       </motion.div>
@@ -59,7 +59,7 @@ export function EmptyState({
         >
           <Button
             onClick={onAction}
-            className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 hover:scale-[1.02] transition-all duration-200"
+            className="bg-purple-600 hover:bg-purple-700 hover:scale-[1.02] transition-all duration-200"
           >
             {actionLabel}
           </Button>

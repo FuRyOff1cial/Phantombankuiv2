@@ -165,7 +165,7 @@ export function Dashboard({
           }}
           className="gpu-accelerate"
         >
-          <Card className="p-6 bg-purple-900/30 border-purple-500/30 bank-glass-blur shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 transition-shadow duration-300">
+          <Card className="p-6 bg-purple-900/60 border-2 border-purple-500/60 bank-glass-blur shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Credit Score</h3>
               <TrendingUp className="w-5 h-5 text-purple-400" />
@@ -181,7 +181,7 @@ export function Dashboard({
           transition={{ delay: 0.2 }}
           className="gpu-accelerate"
         >
-          <Card className="p-6 bg-green-900/30 border-green-500/30 bank-glass-blur shadow-lg shadow-green-500/20 hover:shadow-xl hover:shadow-green-500/30 transition-shadow duration-300">
+          <Card className="p-6 bg-green-900/60 border-2 border-green-500/60 bank-glass-blur shadow-lg shadow-green-500/20 hover:shadow-xl hover:shadow-green-500/30 transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Total Assets</h3>
               <DollarSign className="w-5 h-5 text-green-400" />
@@ -198,7 +198,7 @@ export function Dashboard({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="p-6 bg-orange-900/30 border-orange-500/30 bank-glass-blur shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 transition-shadow duration-300">
+          <Card className="p-6 bg-orange-900/60 border-2 border-orange-500/60 bank-glass-blur shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Transactions</h3>
               <TrendingDown className="w-5 h-5 text-orange-400" />
