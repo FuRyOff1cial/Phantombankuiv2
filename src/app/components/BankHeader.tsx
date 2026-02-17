@@ -53,7 +53,15 @@ export function BankHeader({
               className="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-900/50 border-2 border-purple-500/60"
               whileHover={{ scale: 1.02 }}
             >
-              <Wallet className="w-4 h-4 text-purple-400" />
+              <Wallet 
+                className="w-4 h-4" 
+                style={{ 
+                  stroke: '#c084fc',
+                  fill: 'none',
+                  strokeWidth: 2,
+                  color: '#c084fc'
+                }} 
+              />
               <div>
                 <p className="text-xs text-gray-400" style={{ color: '#9ca3af' }}>Bank Balance</p>
                 <p className="text-sm font-bold text-white" style={{ color: '#ffffff' }}>
@@ -66,7 +74,15 @@ export function BankHeader({
               className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-900/50 border-2 border-green-500/60"
               whileHover={{ scale: 1.02 }}
             >
-              <CreditCard className="w-4 h-4 text-green-400" />
+              <CreditCard 
+                className="w-4 h-4" 
+                style={{ 
+                  stroke: '#4ade80',
+                  fill: 'none',
+                  strokeWidth: 2,
+                  color: '#4ade80'
+                }} 
+              />
               <div>
                 <p className="text-xs text-gray-400" style={{ color: '#9ca3af' }}>Cash</p>
                 <p className="text-sm font-bold text-white" style={{ color: '#ffffff' }}>
@@ -87,7 +103,15 @@ export function BankHeader({
               className="p-2 rounded-lg bg-white/5 hover:bg-white/10 border border-purple-500/20 text-gray-400 hover:text-white transition-all duration-200"
               title="Close (ESC)"
             >
-              <X className="w-5 h-5 text-gray-400 hover:text-white" />
+              <X 
+                className="w-5 h-5" 
+                style={{ 
+                  stroke: '#9ca3af',
+                  fill: 'none',
+                  strokeWidth: 2,
+                  color: '#9ca3af'
+                }} 
+              />
             </button>
           )}
         </div>

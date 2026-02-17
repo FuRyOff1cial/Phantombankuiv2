@@ -93,7 +93,15 @@ export function BankSidebar({
           transition={{ duration: 0.2 }}
         >
           <div className="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center shadow-lg">
-            <Building2 className="w-5 h-5 text-white" />
+            <Building2 
+              className="w-5 h-5" 
+              style={{ 
+                stroke: '#ffffff',
+                fill: 'none',
+                strokeWidth: 2,
+                color: '#ffffff'
+              }} 
+            />
           </div>
           <div>
             <h1 className="text-xl font-bold text-white" style={{ color: '#ffffff' }}>Phantom Bank</h1>
@@ -144,9 +152,13 @@ export function BankSidebar({
                     </>
                   )}
                   <Icon
-                    className={`w-5 h-5 relative z-10 ${
-                      isActive ? "text-white drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]" : "text-gray-400"
-                    }`}
+                    className="w-5 h-5 relative z-10"
+                    style={{
+                      stroke: isActive ? '#ffffff' : '#9ca3af',
+                      fill: 'none',
+                      strokeWidth: 2,
+                      color: isActive ? '#ffffff' : '#9ca3af'
+                    }}
                   />
                   <span className="font-medium relative z-10">{item.label}</span>
                   {showBadge && (
@@ -173,7 +185,13 @@ export function BankSidebar({
           whileTap={{ scale: 0.98 }}
         >
           <LogOut
-            className="w-5 h-5 text-gray-400 group-hover:text-red-400 group-hover:drop-shadow-[0_0_8px_rgba(239,68,68,0.5)] transition-all duration-200"
+            className="w-5 h-5"
+            style={{
+              stroke: '#9ca3af',
+              fill: 'none',
+              strokeWidth: 2,
+              color: '#9ca3af'
+            }}
           />
           <span className="font-medium">Logout</span>
         </motion.button>
