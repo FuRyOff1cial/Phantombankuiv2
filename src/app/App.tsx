@@ -17,40 +17,134 @@ import { BankOpenData, NUIMessage } from "@/types/bank";
 import { fetchNUI, getErrorMessage } from "@/utils/nui";
 import { Loader2 } from "lucide-react";
 
-/**
- * PHANTOM BANK - FIVEM NUI
- * 
- * This is the production-ready version for FiveM servers.
- * 
- * COMMUNICATION PROTOCOL:
- * 
- * 1. FROM SERVER TO UI (window.postMessage):
- *    - { action: "setVisible", visible: boolean } - Show/hide UI
- *    - { action: "setData", success: true, data: BankOpenData } - Send bank data
- * 
- * 2. FROM UI TO SERVER (fetch to https://phantom_bank/<callback>):
- *    - All user actions send POST requests to https://phantom_bank/<callbackName>
- *    - Expected response format: { success: boolean, message?: string, data?: any }
- * 
- * CALLBACKS AVAILABLE:
- * - close, logout
- * - deposit, withdraw, transfer
- * - requestLoan, payLoan, cancelLoan
- * - payInvoice, declineInvoice
- * - createCard, changeCardPin, setCardStatus
- * - depositSociety, withdrawSociety, transferToSociety, transferFromSociety
- * - createSharedAccount, depositShared, withdrawShared, addSharedMember, removeSharedMember
- * - depositSavings, withdrawSavings
- */
-
 export default function App() {
-  // UI state - starts hidden until FiveM opens it
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true); // Changed to true for dev mode
   const [bankData, setBankData] = useState<BankOpenData | null>(null);
   const [activeSection, setActiveSection] = useState("dashboard");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Listen for messages from FiveM client
+  // Initialize with mock data in development
+  useEffect(() => {
+    const isDev = import.meta.env.DEV;
+    if (isDev && !bankData) {
+      // Mock data for development
+      setBankData({
+        identifier: "ABC12345",
+        playerName: "John Doe",
+        iban: "US123456789012",
+        balance: 15000,
+        cash: 2500,
+        creditScore: 750,
+        creditScoreLabel: "Good",
+        isAtm: false,
+        transactions: [
+          {
+            id: 1,
+            sender: "SYSTEM",
+            receiver: "ABC12345",
+            amount: 1000,
+            type: "deposit",
+            description: "Paycheck",
+            created_at: new Date().toISOString()
+          },
+          {
+            id: 2,
+            sender: "ABC12345",
+            receiver: "ATM",
+            amount: 500,
+            type: "withdraw",
+            description: "Cash withdrawal",
+            created_at: new Date(Date.now() - 86400000).toISOString()
+          },
+          {
+            id: 3,
+            sender: "ABC12345",
+            receiver: "XYZ98765",
+            amount: 250,
+            type: "transfer",
+            description: "Rent payment",
+            created_at: new Date(Date.now() - 172800000).toISOString()
+          }
+        ],
+        loans: [
+          {
+            id: 1,
+            amount: 5000,
+            interest: 5.5,
+            total_to_pay: 5275,
+            remaining_balance: 3200,
+            due_date: Math.floor((Date.now() + 5184000000) / 1000),
+            status: "active",
+            created_at: new Date(Date.now() - 2592000000).toISOString(),
+            days_remaining: 60,
+            next_payment: 275
+          }
+        ],
+        invoices: [
+          {
+            id: 1,
+            sender: "DEF54321",
+            receiver: "ABC12345",
+            amount: 150,
+            reason: "Services rendered",
+            status: "pending",
+            created_at: new Date(Date.now() - 86400000).toISOString(),
+            expires_at: Math.floor((Date.now() + 604800000) / 1000)
+          }
+        ],
+        cards: [
+          {
+            id: 1,
+            identifier: "ABC12345",
+            card_number_masked: "**** **** **** 1234",
+            card_number_last4: "1234",
+            card_type: "debit",
+            status: "active",
+            wrong_pin_count: 0,
+            expires_at: Math.floor((Date.now() + 94608000000) / 1000),
+            created_at: new Date(Date.now() - 7776000000).toISOString()
+          }
+        ],
+        society: {
+          jobName: "police",
+          jobLabel: "Los Santos Police Department",
+          balance: 50000
+        },
+        sharedAccounts: [
+          {
+            id: 1,
+            name: "Family Account",
+            balance: 8000,
+            role: "owner"
+          }
+        ],
+        savings: {
+          balance: 12000,
+          last_interest_at: Math.floor((Date.now() - 2592000000) / 1000),
+          total_interest_earned: 250,
+          accrued_since_last: 25,
+          interest_rate: 2.5,
+          frequency: "monthly",
+          period_seconds: 2592000,
+          next_interest_at: Math.floor((Date.now() + 432000000) / 1000)
+        },
+        businesses: [],
+        config: {
+          currency: "$",
+          maxTransfer: 50000,
+          transferTaxPercent: 1,
+          enableLoans: true,
+          enableInvoices: true,
+          enableCards: true,
+          enableBusiness: false,
+          enableSocietyAccounts: true,
+          enableSharedAccounts: true,
+          enableSavingsAccounts: true
+        }
+      });
+    }
+  }, [bankData]);
+
   useEffect(() => {
     const handleMessage = (event: MessageEvent<NUIMessage>) => {
       const { action, ...data } = event.data;
@@ -77,18 +171,6 @@ export default function App() {
     window.addEventListener("message", handleMessage);
     return () => window.removeEventListener("message", handleMessage);
   }, []);
-
-  // ESC key handler to close UI
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && visible) {
-        handleClose();
-      }
-    };
-
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [visible]);
 
   // Close handlers
   const handleClose = async () => {

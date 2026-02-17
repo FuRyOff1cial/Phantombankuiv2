@@ -60,7 +60,7 @@ export function BankHeader({
 
           <div className="flex items-center gap-6">
             <motion.div
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-500/30"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-900/30 border border-purple-500/30"
               whileHover={{ scale: 1.02 }}
             >
               <Wallet className="w-4 h-4 text-purple-400" />
@@ -73,7 +73,7 @@ export function BankHeader({
             </motion.div>
 
             <motion.div
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-900/30 border border-green-500/30"
               whileHover={{ scale: 1.02 }}
             >
               <CreditCard className="w-4 h-4 text-green-400" />

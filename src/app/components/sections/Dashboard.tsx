@@ -165,7 +165,7 @@ export function Dashboard({
           }}
           className="gpu-accelerate"
         >
-          <Card className="p-6 bg-gradient-to-br from-purple-500/20 to-blue-500/20 border-purple-500/30 bank-glass-blur shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 transition-shadow duration-300">
+          <Card className="p-6 bg-purple-900/30 border-purple-500/30 bank-glass-blur shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Credit Score</h3>
               <TrendingUp className="w-5 h-5 text-purple-400" />
@@ -181,7 +181,7 @@ export function Dashboard({
           transition={{ delay: 0.2 }}
           className="gpu-accelerate"
         >
-          <Card className="p-6 bg-gradient-to-br from-green-500/20 to-emerald-500/20 border-green-500/30 bank-glass-blur shadow-lg shadow-green-500/20 hover:shadow-xl hover:shadow-green-500/30 transition-shadow duration-300">
+          <Card className="p-6 bg-green-900/30 border-green-500/30 bank-glass-blur shadow-lg shadow-green-500/20 hover:shadow-xl hover:shadow-green-500/30 transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Total Assets</h3>
               <DollarSign className="w-5 h-5 text-green-400" />
@@ -198,7 +198,7 @@ export function Dashboard({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="p-6 bg-gradient-to-br from-orange-500/20 to-red-500/20 border-orange-500/30 bank-glass-blur shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 transition-shadow duration-300">
+          <Card className="p-6 bg-orange-900/30 border-orange-500/30 bank-glass-blur shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 transition-shadow duration-300">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Transactions</h3>
               <TrendingDown className="w-5 h-5 text-orange-400" />
@@ -238,7 +238,7 @@ export function Dashboard({
               <Button
                 onClick={handleDeposit}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 hover:scale-[1.02] transition-all duration-200"
+                className="w-full bg-green-600 hover:bg-green-700 hover:scale-[1.02] transition-all duration-200"
               >
                 Deposit
               </Button>
@@ -273,7 +273,7 @@ export function Dashboard({
               <Button
                 onClick={handleWithdraw}
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 hover:scale-[1.02] transition-all duration-200"
+                className="w-full bg-red-600 hover:bg-red-700 hover:scale-[1.02] transition-all duration-200"
               >
                 Withdraw
               </Button>

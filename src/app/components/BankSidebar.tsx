@@ -92,7 +92,7 @@ export function BankSidebar({
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.2 }}
         >
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center shadow-lg">
+          <div className="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center shadow-lg">
             <Building2 className="w-5 h-5 text-white" />
           </div>
           <div>
@@ -118,7 +118,7 @@ export function BankSidebar({
                     transition-all duration-200 relative group
                     ${
                       isActive
-                        ? "bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-white shadow-lg shadow-purple-500/20"
+                        ? "bg-purple-900/30 text-white shadow-lg shadow-purple-500/20"
                         : "text-gray-400 hover:text-white hover:bg-white/5"
                     }
                   `}
@@ -126,22 +126,17 @@ export function BankSidebar({
                   whileTap={{ scale: 0.98 }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ 
-                    delay: index * 0.05,
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 30
-                  }}
+                  transition={{ delay: 0.1 + index * 0.02 }}
                 >
                   {isActive && (
                     <>
                       <motion.div
-                        className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 to-blue-500 rounded-r shadow-lg shadow-purple-500/50"
+                        className="absolute left-0 top-0 bottom-0 w-1 bg-purple-500 rounded-r shadow-lg shadow-purple-500/50"
                         layoutId="activeIndicator"
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 rounded-lg blur-sm"
+                        className="absolute inset-0 bg-purple-500/10 rounded-lg blur-sm"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.3 }}
@@ -158,7 +153,7 @@ export function BankSidebar({
                     <motion.span
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="ml-auto bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-lg shadow-purple-500/50 relative z-10"
+                      className="ml-auto bg-purple-600 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-lg shadow-purple-500/50 relative z-10"
                     >
                       {sharedAccounts.length}
                     </motion.span>
