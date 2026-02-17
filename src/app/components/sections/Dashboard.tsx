@@ -80,7 +80,7 @@ export function Dashboard({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card className="p-6 bg-gradient-to-br from-purple-500/10 to-blue-500/10 border-purple-500/30 bank-glass-blur">
+          <Card className="p-6 bg-gradient-to-br from-purple-500/20 to-blue-500/20 border-purple-500/30 bank-glass-blur">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Credit Score</h3>
               <TrendingUp className="w-5 h-5 text-purple-400" />
@@ -95,7 +95,7 @@ export function Dashboard({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <Card className="p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/30 bank-glass-blur">
+          <Card className="p-6 bg-gradient-to-br from-green-500/20 to-emerald-500/20 border-green-500/30 bank-glass-blur">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Total Assets</h3>
               <DollarSign className="w-5 h-5 text-green-400" />
@@ -112,7 +112,7 @@ export function Dashboard({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="p-6 bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/30 bank-glass-blur">
+          <Card className="p-6 bg-gradient-to-br from-orange-500/20 to-red-500/20 border-orange-500/30 bank-glass-blur">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm text-gray-400">Transactions</h3>
               <TrendingDown className="w-5 h-5 text-orange-400" />

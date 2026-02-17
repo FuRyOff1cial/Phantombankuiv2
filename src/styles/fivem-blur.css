@@ -1,74 +1,21 @@
 /**
- * FiveM-compatible blur effects
- * backdrop-filter does NOT work in FiveM/CEF, so we use a fake blur technique
- * with ::before pseudo-element that creates a blurred background layer
+ * FiveM-compatible glass effects
+ * backdrop-filter does NOT work in FiveM/CEF
+ * We use solid backgrounds with layered opacity for depth
  */
 
-/* Main container with fake blur */
+/* Main container - adds a subtle inner glow effect */
 .bank-glass-blur {
   position: relative;
-  overflow: hidden;
+  background: rgba(26, 26, 46, 0.92) !important;
 }
 
-/* Blurred background layer using ::before */
-.bank-glass-blur::before {
-  content: "";
-  position: absolute;
-  inset: -80px;
-  z-index: 0;
-  border-radius: inherit;
-  background: var(--bank-card);
-  filter: blur(200px);
-  opacity: var(--bank-blur-opacity, 0.5);
-  pointer-events: none;
-}
-
-/* Ensure content stays above the blur layer */
-.bank-glass-blur > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Sidebar glass blur variant */
+/* Sidebar glass - solid with gradient */
 .bank-sidebar-glass {
   position: relative;
-  overflow: hidden;
 }
 
-.bank-sidebar-glass::before {
-  content: "";
-  position: absolute;
-  inset: -80px;
-  z-index: 0;
-  background: var(--bank-bg);
-  filter: blur(200px);
-  opacity: var(--bank-blur-opacity, 0.5);
-  pointer-events: none;
-}
-
-.bank-sidebar-glass > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Header glass blur variant */
+/* Header glass - solid with gradient */
 .bank-header-glass {
   position: relative;
-  overflow: hidden;
-}
-
-.bank-header-glass::before {
-  content: "";
-  position: absolute;
-  inset: -60px;
-  z-index: 0;
-  background: var(--bank-bg);
-  filter: blur(150px);
-  opacity: var(--bank-blur-opacity, 0.5);
-  pointer-events: none;
-}
-
-.bank-header-glass > * {
-  position: relative;
-  z-index: 1;
 }
