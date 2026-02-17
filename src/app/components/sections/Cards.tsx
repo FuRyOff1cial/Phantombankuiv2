@@ -159,7 +159,6 @@ export function Cards({
                     cardTypeColors.default
                   } relative overflow-hidden`}
                 >
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
                   <div className="relative">
                     <div className="flex items-center justify-between mb-8">
                       <CreditCard className="w-8 h-8 text-white/80" />

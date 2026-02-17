@@ -1,21 +1,18 @@
 /**
  * FiveM-compatible glass effects
  * backdrop-filter does NOT work in FiveM/CEF
- * We use solid backgrounds with layered opacity for depth
+ * Using solid backgrounds for maximum compatibility
  */
 
-/* Main container - adds a subtle inner glow effect */
+/* Placeholder classes - backgrounds are set directly on components */
 .bank-glass-blur {
   position: relative;
-  background: rgba(26, 26, 46, 0.92) !important;
 }
 
-/* Sidebar glass - solid with gradient */
 .bank-sidebar-glass {
   position: relative;
 }
 
-/* Header glass - solid with gradient */
 .bank-header-glass {
   position: relative;
 }

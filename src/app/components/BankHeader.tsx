@@ -17,7 +17,7 @@ export function BankHeader({
   currency,
 }: BankHeaderProps) {
   return (
-    <div className="h-20 border-b border-purple-500/20 bg-gradient-to-r from-[#0f0f1e]/95 to-[#1a1a2e]/95 bank-header-glass">
+    <div className="h-20 border-b border-purple-500/20 bg-[#0f0f1e] bank-header-glass">
       <div className="h-full px-8 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <div>

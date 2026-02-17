@@ -696,12 +696,6 @@ export default function App() {
     <>
       <BankToaster />
       <div className="fixed inset-0 bg-[#0a0a14] flex items-center justify-center p-4">
-        {/* Animated Background */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-purple-500/5 rounded-full blur-2xl" />
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-500/5 rounded-full blur-2xl" />
-        </div>
-
         {/* Main Container */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -732,7 +726,7 @@ export default function App() {
               />
 
               {/* Main Content */}
-              <div className="flex-1 flex flex-col bg-gradient-to-br from-[#0f0f1e]/95 to-[#1a1a2e]/95">
+              <div className="flex-1 flex flex-col bg-[#1a1a2e]">
                 <BankHeader
                   playerName={bankData.playerName}
                   iban={bankData.iban}
