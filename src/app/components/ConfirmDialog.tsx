@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from "motion/react";
 import { AlertTriangle, X } from "lucide-react";
 import { Button } from "./ui/button";
-import { Card } from "./ui/card";
 
 interface ConfirmDialogProps {
   isOpen: boolean;
@@ -30,22 +29,22 @@ export function ConfirmDialog({
 
   const variantColors = {
     danger: {
-      bg: "from-red-500/20 to-pink-500/20",
-      border: "border-red-500/30",
-      icon: "text-red-400",
-      button: "bg-red-600 hover:bg-red-700",
+      borderColor: "rgba(239, 68, 68, 0.5)",
+      iconColor: "#ef4444",
+      buttonBg: "#dc2626",
+      buttonHoverBg: "#b91c1c",
     },
     warning: {
-      bg: "from-orange-500/20 to-yellow-500/20",
-      border: "border-orange-500/30",
-      icon: "text-orange-400",
-      button: "bg-orange-600 hover:bg-orange-700",
+      borderColor: "rgba(249, 115, 22, 0.5)",
+      iconColor: "#f97316",
+      buttonBg: "#ea580c",
+      buttonHoverBg: "#c2410c",
     },
     info: {
-      bg: "from-blue-500/20 to-cyan-500/20",
-      border: "border-blue-500/30",
-      icon: "text-blue-400",
-      button: "bg-blue-600 hover:bg-blue-700",
+      borderColor: "rgba(59, 130, 246, 0.5)",
+      iconColor: "#3b82f6",
+      buttonBg: "#2563eb",
+      buttonHoverBg: "#1d4ed8",
     },
   };
 
@@ -54,15 +53,21 @@ export function ConfirmDialog({
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-[9999]">
+          {/* Semi-transparent backdrop to see content behind */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center"
+            className="absolute inset-0 z-[9999]"
+            style={{ 
+              backgroundColor: "rgba(0, 0, 0, 0.7)"
+            }}
             onClick={onClose}
-          >
+          />
+          
+          {/* Content container */}
+          <div className="absolute inset-0 z-[10000] flex items-center justify-center pointer-events-none">
             {/* Dialog */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -70,29 +75,44 @@ export function ConfirmDialog({
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md mx-4"
+              className="w-full max-w-md mx-4 pointer-events-auto"
             >
-              <Card
-                className={`p-6 bg-[#1a1a2e] ${colors.border} border-2 bank-glass-blur shadow-2xl`}
+              <div
+                style={{
+                  background: "linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%)",
+                  border: `2px solid ${colors.borderColor}`,
+                  borderRadius: "16px",
+                  padding: "20px",
+                  boxShadow: "0 25px 50px rgba(0, 0, 0, 0.5)",
+                }}
               >
-                <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-12 h-12 rounded-lg bg-black/30 flex items-center justify-center ${colors.border} border`}
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        borderRadius: "8px",
+                        backgroundColor: "rgba(0, 0, 0, 0.5)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        border: `2px solid ${colors.borderColor}`,
+                      }}
                     >
-                      <AlertTriangle className={`w-6 h-6 ${colors.icon}`} />
+                      <AlertTriangle className="w-5 h-5" style={{ color: colors.iconColor }} />
                     </div>
-                    <h3 className="text-xl font-bold text-white">{title}</h3>
+                    <h3 className="text-lg font-bold text-white">{title}</h3>
                   </div>
                   <button
                     onClick={onClose}
                     className="text-gray-400 hover:text-white transition-colors"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-4 h-4" />
                   </button>
                 </div>
 
-                <p className="text-gray-300 mb-6 leading-relaxed">
+                <p className="text-gray-300 mb-5 leading-relaxed pl-1 text-sm">
                   {description}
                 </p>
 
@@ -100,22 +120,31 @@ export function ConfirmDialog({
                   <Button
                     onClick={onConfirm}
                     disabled={isLoading}
-                    className={`flex-1 ${colors.button} hover:scale-[1.02] transition-all duration-200`}
+                    className="flex-1 hover:scale-[1.02] transition-all duration-200 font-semibold text-sm"
+                    style={{
+                      backgroundColor: colors.buttonBg,
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = colors.buttonHoverBg;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = colors.buttonBg;
+                    }}
                   >
                     {confirmText}
                   </Button>
                   <Button
                     onClick={onClose}
                     disabled={isLoading}
-                    className="flex-1 bg-gray-600 hover:bg-gray-700 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg"
+                    className="flex-1 bg-gray-700 hover:bg-gray-600 text-white border-0 hover:scale-[1.02] transition-all duration-200 shadow-lg font-semibold text-sm"
                   >
                     {cancelText}
                   </Button>
                 </div>
-              </Card>
+              </div>
             </motion.div>
-          </motion.div>
-        </>
+          </div>
+        </div>
       )}
     </AnimatePresence>
   );

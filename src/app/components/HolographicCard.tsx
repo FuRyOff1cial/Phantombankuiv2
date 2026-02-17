@@ -6,6 +6,7 @@ import { formatDate } from "@/utils/nui";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Card as UICard } from "./ui/card";
+import { ConfirmDialog } from "./ConfirmDialog";
 
 interface HolographicCardProps {
   card: CardType;
@@ -46,6 +47,7 @@ export function HolographicCard({
   const [oldPin, setOldPin] = useState("");
   const [newPin, setNewPin] = useState("");
   const [showDetails, setShowDetails] = useState(false);
+  const [showCancelDialog, setShowCancelDialog] = useState(false);
 
   const handleChangePinClick = () => {
     if (changingPin && oldPin && newPin && oldPin.length === 4 && newPin.length === 4) {
@@ -58,6 +60,11 @@ export function HolographicCard({
       setOldPin("");
       setNewPin("");
     }
+  };
+
+  const handleCancelCard = () => {
+    onCancelCard(card.id);
+    setShowCancelDialog(false);
   };
 
   const colors = cardTypeColors[card.card_type as keyof typeof cardTypeColors] || cardTypeColors.default;
@@ -284,7 +291,7 @@ export function HolographicCard({
                 Reissue Card
               </Button>
               <Button
-                onClick={() => onCancelCard(card.id)}
+                onClick={() => setShowCancelDialog(true)}
                 disabled={isLoading}
                 size="sm"
                 className="w-full bg-red-700 hover:bg-red-800 text-white shadow-lg hover:scale-[1.02] transition-all duration-200"
@@ -296,6 +303,17 @@ export function HolographicCard({
           )}
         </div>
       </UICard>
+      <ConfirmDialog
+        isOpen={showCancelDialog}
+        onClose={() => setShowCancelDialog(false)}
+        onConfirm={handleCancelCard}
+        title="Cancel card?"
+        description="Are you sure you want to cancel this card? This action cannot be undone."
+        confirmText="Yes, cancel"
+        cancelText="No"
+        variant="danger"
+        isLoading={isLoading}
+      />
     </motion.div>
   );
 }

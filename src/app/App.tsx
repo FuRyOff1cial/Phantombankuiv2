@@ -748,6 +748,7 @@ export default function App() {
                 savings={bankData.savings}
                 isAtm={bankData.isAtm}
                 onLogout={handleLogout}
+                creditScore={bankData.creditScore}
               />
 
               {/* Main Content */}
